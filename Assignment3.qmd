@@ -1,0 +1,43 @@
+---
+title: "Assignment3 - Covid19: vaccination rates, case numbers, and death rates compare across France, Canada, Germany, India, the UK, and the US"
+format: 
+  html: default
+  pdf: default
+editor: visual
+author: 
+  - name: "Midhun Unnikrishnan"
+    affiliation: "GitHub: @MidhunUnnikrishnan7"
+  - name: "Sumintra Boonmat"
+    affiliation: "GitHub: @SumintraB"
+  - name: "Lin Qi"
+    affiliation: "GitHub: @linqi70"
+---
+
+## Table of contents
+
+## Executive summary
+
+## Introduction
+
+## Methodology (with figure and table + references)
+
+## Results (with either a figure or table)
+
+```{r message=FALSE}
+library(tidyverse)
+```
+
+Case Rate
+
+Vaccination
+
+### Death Rate
+
+```{r}
+cases_deaths <- read_csv("data/cases_deaths.csv") |>
+  filter(country %in% c("United Kingdom", "Canada", "France", "Germany", "India", "United States"))
+```
+
+## Discussion, conclusion, recommendations
+
+## Reference section
