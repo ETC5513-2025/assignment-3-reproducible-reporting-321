@@ -1,8 +1,16 @@
 ---
 title: "linqi70"
-format: pdf
+format: html
 editor: visual
 ---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  warning = FALSE,
+  message = FALSE,
+  echo = TRUE
+)
+```
 
 # Executive Summary {#sec-intro}
 
@@ -46,7 +54,6 @@ Before analysis, we checked for missing values in the vaccination dataset. We re
 
 We then merged the confirmed case dataset with the vaccination dataset by country and date. To ensure valid comparisons across countries, we filtered the merged dataset to include only the common time range where all countries had vaccination data available.
 
-
 ```{r}
 library(tidyverse)
 library(lubridate)
@@ -59,6 +66,7 @@ names(case)[1] <- "Day"
 names(vaccine)[1] <- "Day"
 names(death)[1] <- "Day"
 ```
+
 ```{r}
 case_long = case |>
   pivot_longer(-Day, names_to = "Country", 
@@ -191,6 +199,7 @@ merge2 |>
        y = "Per Million", x = "Day") +
   theme_minimal()
 ```
+
 @fig-case-death-vacc compares the trends of confirmed cases, death rates, and vaccination rates across six countries. Earlier waves—before widespread vaccination—showed a much closer link between cases and deaths.
 
 This pattern suggests that vaccination programs, alongside other public health measures, played a key role in reducing the severity of outcomes even when infection levels remained high.
@@ -205,10 +214,10 @@ In this project, we looked at COVID-19 confirmed cases, deaths, and vaccination 
 
 We found three main things:
 
-1. In most countries, case numbers went up before vaccines were given.
+1.  In most countries, case numbers went up before vaccines were given.
 
-2. During big outbreaks, both cases and vaccine doses changed a lot from day to day.
+2.  During big outbreaks, both cases and vaccine doses changed a lot from day to day.
 
-3. A 7-day delay showed that when vaccination rates went up, new case numbers went down later on. This was most clear in places that started vaccines early and kept going.
+3.  A 7-day delay showed that when vaccination rates went up, new case numbers went down later on. This was most clear in places that started vaccines early and kept going.
 
 This means that vaccines helped reduce the spread and saved lives. In the future, countries should act fast and start vaccinations early during health emergencies.
