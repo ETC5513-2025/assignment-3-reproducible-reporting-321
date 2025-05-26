@@ -1,6 +1,12 @@
 ---
-title: "linqi70"
-format: html
+title: "COVID-19 Impact Analysis: Cases, Deaths, and Vaccination Rates Across Canada, France, Germany, India, the United Kingdom, and the United States."
+author: "Lin Qi, Midhun Unnikrishnan, and Sumintra Boonmat"
+format:
+  pdf:
+    toc: true
+    toc-depth: 2
+    fig_caption: true
+    number-sections: true
 editor: visual
 ---
 
@@ -16,7 +22,7 @@ knitr::opts_chunk$set(
 
 <!-- linqi70 -->
 
-This report compares the confirmed COVID-19 case number, death rates, and vaccination rates across six countries: Canada, France Germany, India, the United Kingdom and the United States. It analyzes time series data from Feb 2020 to July 2023, aiming to explore the extent to which vaccination efforts have contributed to pandemic control.
+This report compares the confirmed COVID-19 case number, death rates, and vaccination rates across six countries: Canada, France, Germany, India, the United Kingdom and the United States. It analyzes time series data from Feb 2020 to July 2023, aiming to explore the extent to which vaccination efforts have contributed to pandemic control.
 
 # Introduction {#sec-intro}
 
@@ -118,7 +124,7 @@ vacc_long |>
   knitr::kable()
 ```
 
-As shown in @fig-vacc-trend shows the 7-day average vaccination doses per million across the six countries. Canada, France, Germany, the UK, and the US all ramped up vaccination rapidly during early 2021, while India lagged slightly behind, with a noticeable delay in rollout. @tbl-vacc-summary confirms the start and end dates of vaccine data coverage, showing that most countries began vaccination efforts in late December 2020. This aligns with Our World in Data’s findings that vaccine rollout was uneven globally, with lower coverage in lower-income regions.
+@fig-vacc-trend shows the 7-day average vaccination doses per million across the six countries. Canada, France, Germany, the UK, and the US all ramped up vaccination rapidly during early 2021, while India lagged slightly behind, with a noticeable delay in rollout. @tbl-vacc-summary confirms the start and end dates of vaccine data coverage, showing that most countries began vaccination efforts in late December 2020. This aligns with Our World in Data’s findings that vaccine rollout was uneven globally, with lower coverage in lower-income regions.
 
 ```{r}
 #| label: fig-vacc-vs-case
@@ -134,7 +140,7 @@ merge1 |>
   theme_minimal()
 ```
 
-In order to more clearly understand the temporal relationship between COVID-19 outbreaks and vaccination, we constructed the @fig-vacc-vs-case, which displays the number of daily diagnoses per million people overlaid on the number of vaccinations, arranged faceted by country. We can see that the number of confirmed cases increased before the vaccination rate started to rise. This means that many governments began to roll out vaccines after the number of cases went up. This figure is useful because it shows the timing of the outbreak and the response. It helps us see whether vaccines were given early or late during a wave.
+In order to more clearly understand the temporal relationship between COVID-19 outbreaks and vaccination, we constructed the @fig-vacc-vs-case, which displays the number of daily diagnoses per million people overlaid on the number of vaccinations, arranged faceted by country. We can see that the number of confirmed cases increased before the vaccination rate started to rise. This means that many governments began to roll out vaccines after the number of cases went up. This figure is useful for visualizing the timing between outbreaks and vaccination responses. It helps us see whether vaccines were given early or late during a wave.
 
 ```{r}
 #| label: fig-daily-change
@@ -183,7 +189,7 @@ However, as Our World in Data points out, vaccines became less effective in stop
 
 ```{r}
 #| label: fig-case-death-vacc
-#| fig-cap: "Figure: COVID-19 confirmed case-death raees-vaccination by country)"
+#| fig-cap: "Figure: COVID-19 confirmed case-death rates-vaccination by country)"
 merge2 = left_join(merge1, death_long |>
                      select(Day, Country, Death_per_million), 
                    by = c("Day", "Country"))
@@ -210,14 +216,14 @@ We found that countries with early and wide vaccination had better control of th
 
 # Conclusion {#sec-conclusion}
 
-In this project, we looked at COVID-19 confirmed cases, deaths, and vaccination rates in six countries: Canada, France, Germany, India, the UK, and the US.
+During the project, we analyzed numbers of confirmed cases, deaths and vaccinations in Canada, France, Germany, India, the UK and the US.
 
-We found three main things:
+Our findings highlight three key observations:
 
-1.  In most countries, case numbers went up before vaccines were given.
+1. In most countries, the number of cases increased quite a bit before widespread vaccination took place.
 
-2.  During big outbreaks, both cases and vaccine doses changed a lot from day to day.
+2. During major outbreaks, both case numbers and vaccine doses administered showed significant daily fluctuations.
 
-3.  A 7-day delay showed that when vaccination rates went up, new case numbers went down later on. This was most clear in places that started vaccines early and kept going.
+3. A 7-day lag analysis indicated that rising vaccination rates were followed by a reduction in new case numbers. Areas where vaccination started early and was kept up showed the strongest impact.
 
-This means that vaccines helped reduce the spread and saved lives. In the future, countries should act fast and start vaccinations early during health emergencies.
+These insights suggest that timely and sustained vaccination campaigns played a crucial role in reducing transmission and saving lives. Future public health responses should prioritize early vaccine deployment during pandemics.
