@@ -54,3 +54,5 @@ ggplot(cases_deaths, aes(x = date, y = total_deaths, color = country)) +
 ## Discussion, conclusion, recommendations
 
 ## Reference section
+
+Ritchie, H., Mathieu, E., Rodés-Guirao, L., Appel, C., Giattino, C., Ortiz-Ospina, E., Hasell, J., Macdonald, B., Beltekian, D., & Roser, M. (2023). *Coronavirus Pandemic (COVID-19)*. Our World in Data. <https://ourworldindata.org/covid-deaths>
