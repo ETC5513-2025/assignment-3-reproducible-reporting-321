@@ -1,4 +1,4 @@
-# [Project Title]
+# COVID-19 Impact Analysis: Cases, Deaths, and Vaccination Rates Across Canada, France, Germany, India, the United Kingdom, and the United States.
 Collaborative Assignment - ETC5513
 xXx (Update Required)
 
