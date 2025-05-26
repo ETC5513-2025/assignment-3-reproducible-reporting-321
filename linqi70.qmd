@@ -51,7 +51,7 @@ We then merged the confirmed case dataset with the vaccination dataset by countr
 library(tidyverse)
 library(lubridate)
 library(ggplot2)
-case = read_csv("~/Desktop/5513/asgm3/COVID-19 confirmed case per million.csv")
+case = read_csv("COVID-19 confirmed case per million.csv")
 death = read_csv("Total confirmed deaths due to COVID-19 per 100,000 people.csv")
 vaccine = read_csv("COVID-19 vaccination.csv")
 
