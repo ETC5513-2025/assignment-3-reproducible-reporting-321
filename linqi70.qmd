@@ -1,0 +1,214 @@
+---
+title: "linqi70"
+format: pdf
+editor: visual
+---
+
+# Executive Summary {#sec-intro}
+
+<!-- linqi70 -->
+
+This report compares the confirmed COVID-19 case number, death rates, and vaccination rates across six countries: Canada, France Germany, India, the United Kingdom and the United States. It analyzes time series data from Feb 2020 to July 2023, aiming to explore the extent to which vaccination efforts have contributed to pandemic control.
+
+# Introduction {#sec-intro}
+
+<!-- linqi70 -->
+
+Since early 2020, COVID-19 has impacted countries across the world with varying intensity. As governments responded with testing, lockdowns, and eventually mass vaccination, it became clear that outcomes differed significantly between nations. This study focuses on France, Germany, India, Canada, the UK, and the US, aiming to provide a comparative understanding of how COVID-19 evolved in each country and whether vaccination efforts aligned with reduced fatality rates.
+
+# Methodology {#sec-method}
+
+**Data Source**:
+
+We used publicly available datasets from [Our World in Data](https://ourworldindata.org/coronavirus), including:
+
+-   Confirmed COVID-19 case numbers: https://ourworldindata.org/covid-cases
+
+-   COVID-19 death data: https://ourworldindata.org/covid-deaths
+
+-   COVID-19 vaccination data: https://ourworldindata.org/covid-vaccinations
+
+**Time Range Validation**:
+
+-   Confirmed Cases: February 1, 2020 - February 1, 2023
+
+-   Death Rates: February 1, 2020 - February 1, 2023
+
+-   Vaccination Data:
+
+The vaccination dataset was obtained from Our World in Data. We observed that different countries had different vaccination start and end dates. For example, Canada and the US began recording vaccinations in December 2020, while India started in mid-January 2021. These differences are likely due to unequal access to vaccines and different national data reporting schedules.
+
+To ensure fair comparisons, we limited our analysis to the overlapping period across all six countries: from January 16, 2021 to September 4, 2022. This allows for consistent visualization and avoids bias caused by missing early or late-stage data in certain countries.
+
+**Data Cleaning and Preprocessing**:
+
+Before analysis, we checked for missing values in the vaccination dataset. We removed any records with missing doses per million using R’s `filter(!is.na(...))` function.
+
+We then merged the confirmed case dataset with the vaccination dataset by country and date. To ensure valid comparisons across countries, we filtered the merged dataset to include only the common time range where all countries had vaccination data available.
+
+
+```{r}
+library(tidyverse)
+library(lubridate)
+library(ggplot2)
+case = read_csv("~/Desktop/5513/asgm3/COVID-19 confirmed case per million.csv")
+death = read_csv("Total confirmed deaths due to COVID-19 per 100,000 people.csv")
+vaccine = read_csv("COVID-19 vaccination.csv")
+
+names(case)[1] <- "Day"
+names(vaccine)[1] <- "Day"
+names(death)[1] <- "Day"
+```
+```{r}
+case_long = case |>
+  pivot_longer(-Day, names_to = "Country", 
+               values_to = "Confirmed_per_million") |>
+  mutate(Day = ymd(Day))
+
+death_long = death |>
+  pivot_longer(-Day, names_to = "Country",
+               values_to = "Death_per_100k") |>
+  mutate(Day = ymd(Day),
+         Death_per_million = Death_per_100k * 10)
+```
+
+```{r}
+names(vaccine) <- c("Day", "Canada", "France", "Germany", "India", "United Kingdom", "United States")
+
+vacc_long <- vaccine |> 
+  pivot_longer(-Day, names_to = "Country", values_to = "Vaccination") |>
+  mutate(Day = ymd(Day), 
+         Doses = as.numeric(Vaccination)) |>
+  filter(!is.na(Vaccination))
+
+merge1 = left_join(case_long,vacc_long, by = c("Day", "Country"))
+merge2 = left_join(merge1, death_long |> 
+                     select(Day, Country, Death_per_million),
+                   by = c("Day", "Country"))
+```
+
+```{r}
+#| label: fig-vacc-trend
+#| fig-cap: "Figure: COVID-19 vaccine: 7-day average doses per million (by country)"
+
+vacc_long |> 
+  ggplot(aes(x = Day, y = Vaccination, color = Country)) +
+  geom_line(linewidth = 0.5) +
+  labs(x = "Date", y = "7-day average doses per million",
+       title = "Vaccine Uptake Trends by Country") +
+  theme_minimal()
+```
+
+```{r}
+#| label: tbl-vacc-summary
+#| tbl-cap: "Table: Summary of vaccination data coverage (start-end date by country)"
+library(knitr)
+vacc_long |> 
+  group_by(Country) |> 
+  summarise(Start = min(Day, na.rm = TRUE), 
+            End = max(Day, na.rm = TRUE)) |> 
+  knitr::kable()
+```
+
+As shown in @fig-vacc-trend shows the 7-day average vaccination doses per million across the six countries. Canada, France, Germany, the UK, and the US all ramped up vaccination rapidly during early 2021, while India lagged slightly behind, with a noticeable delay in rollout. @tbl-vacc-summary confirms the start and end dates of vaccine data coverage, showing that most countries began vaccination efforts in late December 2020. This aligns with Our World in Data’s findings that vaccine rollout was uneven globally, with lower coverage in lower-income regions.
+
+```{r}
+#| label: fig-vacc-vs-case
+#| fig-cap: "Figure: Comparison of confirmed cases and vaccination rates per million (by country)"
+merge1 |> 
+  pivot_longer(cols = c("Confirmed_per_million", "Vaccination"),
+               names_to = "Metric", values_to = "Value") |>
+  ggplot(aes(x = Day, y = Value, color = Metric)) +
+  geom_line() +
+  facet_wrap(~Country, scales = "free_y") +
+  labs(title = "COVID-19 Cases and Vaccination Rates per Million",
+       y = "Per Million (7-day average)", x = "Day") +
+  theme_minimal()
+```
+
+In order to more clearly understand the temporal relationship between COVID-19 outbreaks and vaccination, we constructed the @fig-vacc-vs-case, which displays the number of daily diagnoses per million people overlaid on the number of vaccinations, arranged faceted by country. We can see that the number of confirmed cases increased before the vaccination rate started to rise. This means that many governments began to roll out vaccines after the number of cases went up. This figure is useful because it shows the timing of the outbreak and the response. It helps us see whether vaccines were given early or late during a wave.
+
+```{r}
+#| label: fig-daily-change
+#| fig-cap: "	Figure: Daily changes in confirmed cases and vaccine doses per million"
+merge_diff = merge1 |> 
+  group_by(Country) |>
+  arrange(Day) |>
+  mutate(
+    case_diff = Confirmed_per_million - lag(Confirmed_per_million),
+    vacc_diff = Vaccination - lag(Vaccination)) |>
+  pivot_longer(cols = c(case_diff, vacc_diff), 
+               names_to = "Metric", values_to = "Value") |>
+  filter(!is.na(Value))
+merge_diff |>
+  ggplot(aes(x = Day, y = Value, color = Metric)) +
+  geom_line(alpha = 0.7) +
+  facet_wrap(~Country, scales = "free_y") +
+  labs(title = "Daily Change in Vaccination and Confirmed Cases",
+       y = "Daily Change (per million)", x = "Date") +
+  theme_minimal()
+```
+
+@fig-daily-change highlights the daily change in confirmed cases and vaccinations. It shows how much each number went up or down each day. We can see during major outbreaks, the daily changes were large. There were big increases in confirmed cases, and then some countries also had big jumps in vaccination. This figure helps us understand how fast things changed. It also shows how quickly some countries reacted when cases increased.
+
+```{r}
+#| label: fig-lag-effect
+#| fig-cap: "Figure: Lagged vaccination rate vs confirmed cases (7-day lag, by country)"
+merge1_lag = merge1 |> 
+  group_by(Country) |> 
+  arrange(Day) |> 
+  mutate(vacc_7 = lag(Vaccination, 7))
+
+ggplot(merge1_lag, aes(x = vacc_7, y = Confirmed_per_million)) +
+  geom_point(size = 1, alpha = 0.5) +
+  geom_smooth(method = "lm", se = FALSE) +
+  facet_wrap(~Country) +
+  labs(title = "Effect of Vaccination (Lag 7days) on COVID-19 Confirmed Cases",
+       x = "Vaccination Rate (Lagged 7Days)", 
+       y = "Confirmed Cases per Million") +
+  theme_minimal()
+```
+
+To understand if vaccines helped reduce new COVID-19 cases, we looked at vaccination rates with a 7-day lag. This means we checked if higher vaccination numbers one week earlier were linked to fewer new cases later. The @fig-lag-effect shows that in countries like the US and UK, when more people were vaccinated, new case numbers often went down after a few days. This suggests that vaccines helped slow the spread of the virus.
+
+However, as Our World in Data points out, vaccines became less effective in stopping infections over time, especially when new variants appeared. Even so, they still helped reduce the number of serious cases and deaths.
+
+```{r}
+#| label: fig-case-death-vacc
+#| fig-cap: "Figure: COVID-19 confirmed case-death raees-vaccination by country)"
+merge2 = left_join(merge1, death_long |>
+                     select(Day, Country, Death_per_million), 
+                   by = c("Day", "Country"))
+merge2 |> 
+  pivot_longer(cols = c("Confirmed_per_million", 
+                        "Vaccination", 
+                        "Death_per_million"),
+               names_to = "Metric", values_to = "Value") |>
+  ggplot(aes(x = Day, y = Value, color = Metric)) +
+  geom_line(linewidth = 0.5) +
+  facet_wrap( ~ Country, scales = "free_y") +
+  labs(title = "COVID-19 Cases, Deaths, and Vaccination Rates per Million",
+       y = "Per Million", x = "Day") +
+  theme_minimal()
+```
+@fig-case-death-vacc compares the trends of confirmed cases, death rates, and vaccination rates across six countries. Earlier waves—before widespread vaccination—showed a much closer link between cases and deaths.
+
+This pattern suggests that vaccination programs, alongside other public health measures, played a key role in reducing the severity of outcomes even when infection levels remained high.
+
+The trend is less clear in countries with shorter or later vaccination coverage, such as India, possibly due to data gaps or other healthcare constraints.
+
+We found that countries with early and wide vaccination had better control of the virus. In these places, case numbers went down after people started getting vaccinated. Later waves of COVID-19 caused fewer deaths than early ones. This shows that vaccines helped not only to stop the spread, but also to stop people from dying. Vaccination made a big difference.
+
+# Conclusion {#sec-conclusion}
+
+In this project, we looked at COVID-19 confirmed cases, deaths, and vaccination rates in six countries: Canada, France, Germany, India, the UK, and the US.
+
+We found three main things:
+
+1. In most countries, case numbers went up before vaccines were given.
+
+2. During big outbreaks, both cases and vaccine doses changed a lot from day to day.
+
+3. A 7-day delay showed that when vaccination rates went up, new case numbers went down later on. This was most clear in places that started vaccines early and kept going.
+
+This means that vaccines helped reduce the spread and saved lives. In the future, countries should act fast and start vaccinations early during health emergencies.
