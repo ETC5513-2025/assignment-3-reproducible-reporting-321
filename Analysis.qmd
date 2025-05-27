@@ -1,31 +1,29 @@
 ---
-title: "COVID-19 Impact Analysis: Cases, Deaths, and Vaccination Rates Across Canada, France, Germany, India, the United Kingdom, and the United States."
+title: "COVID-19 Impact Analysis: Cases, Deaths, and Vaccination Rates Across Six Countries"
 author: "Lin Qi, Midhun Unnikrishnan, and Sumintra Boonmat"
-format:
+format: 
   pdf:
     toc: true
-    toc-depth: 2
     number-sections: true
-    fig-caption: true
-    mainfont: "Times New Roman"
+    fig-cap-location: bottom
+    fig-align: center
     fontsize: 11pt
-    linestretch: 1.3
-    colorlinks: true
-    linkcolor: blue
-    urlcolor: blue
-    citecolor: blue
+    linestretch: 1.5
+    keep-tex: true
+    documentclass: article
     geometry: margin=1in
-    include-in-header: "styles.tex"
-editor: visual
+mainfont: "Times New Roman"
+linkcolor: blue
+urlcolor: blue
+fontsize: 11pt
+header-includes:
+  - \input{custom-header.tex}
 ---
-
-
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(
   warning = FALSE,
-  message = FALSE,
-  echo = FALSE
+  message = FALSE
 )
 ```
 
@@ -33,7 +31,7 @@ knitr::opts_chunk$set(
 
 This report details a study of COVID-19 confirmed cases, deaths, and vaccination rates across Canada, France, Germany, India, the UK, and the US from February 2020 to July 2023. It shows the impact of vaccination on pandemic outcomes. Studies state that countries, including the US and UK, saw a decrease in both cases and deaths when vaccination uptake began at the onset of the pandemic. This analysis shows how vaccination has a proportionately large effect relative to decreasing pandemic numbers.
 
-# Introduction {#sec-intro}
+# Introduction
 
 Since early 2020, countries around the globe have experienced COVID-19 to different extents. Governments responded with measures like testing, lockdowns, and mass vaccination, but the outcomes varied significantly. This study compares Canada, France, Germany, India, the UK, and the US to understand the contrast in outcomes. It researches time series data on confirmed cases, deaths, and vaccination rates from 2020 to 2023. The primary question focuses on the role of vaccination in decreasing case numbers and mortality rates. Vaccination programs started at varying times, with richer nations beginning earlier. For example, Canada and the United States started vaccinations in December 2020, while India began in January 2021. This study aims to provide insight into successful responses to the pandemic. It highlights the importance of vaccination in reducing the spread and severity of the virus.
 
@@ -68,12 +66,13 @@ Before analysis, we checked for missing values in the vaccination dataset. We re
 We then merged the confirmed case dataset with the vaccination dataset by country and date. To ensure valid comparisons across countries, we filtered the merged dataset to include only the common time range where all countries had vaccination data available.
 
 ```{r}
+#| echo: false
 library(tidyverse)
 library(lubridate)
 library(ggplot2)
-case = read_csv("data/COVID-19 confirmed case per million.csv")
-death = read_csv("data/Total confirmed deaths due to COVID-19 per 100,000 people.csv")
-vaccine = read_csv("data/COVID-19 vaccination.csv")
+case = read_csv(here::here("data/COVID-19 confirmed case per million.csv"))
+death = read_csv(here::here("data/Total confirmed deaths due to COVID-19 per 100,000 people.csv"))
+vaccine = read_csv(here::here("data/COVID-19 vaccination.csv"))
 
 names(case)[1] <- "Day"
 names(vaccine)[1] <- "Day"
@@ -81,6 +80,7 @@ names(death)[1] <- "Day"
 ```
 
 ```{r}
+#| echo: false
 case_long = case |>
   pivot_longer(-Day, names_to = "Country", 
                values_to = "Confirmed_per_million") |>
@@ -94,6 +94,7 @@ death_long = death |>
 ```
 
 ```{r}
+#| echo: false
 names(vaccine) <- c("Day", "Canada", "France", "Germany", "India", "United Kingdom", "United States")
 
 vacc_long <- vaccine |> 
@@ -109,6 +110,7 @@ merge2 = left_join(merge1, death_long |>
 ```
 
 ```{r}
+#| echo: false
 #| label: fig-vacc-trend
 #| fig-cap: "Figure: COVID-19 vaccine: 7-day average doses per million (by country)"
 
@@ -121,6 +123,7 @@ vacc_long |>
 ```
 
 ```{r}
+#| echo: false
 #| label: tbl-vacc-summary
 #| tbl-cap: "Table: Summary of vaccination data coverage (start-end date by country)"
 library(knitr)
@@ -133,7 +136,8 @@ vacc_long |>
 
 @fig-vacc-trend shows the 7-day average vaccination doses per million across the six countries. Canada, France, Germany, the UK, and the US all ramped up vaccination rapidly during early 2021, while India lagged slightly behind, with a noticeable delay in rollout. @tbl-vacc-summary confirms the start and end dates of vaccine data coverage, showing that most countries began vaccination efforts in late December 2020. This aligns with Our World in Data’s findings that vaccine rollout was uneven globally, with lower coverage in lower-income regions.
 
-```{r, fig.width=14, fig.height=10}
+```{r, fig.width=12, fig.height=5}
+#| echo: false
 #| label: fig-vacc-vs-case
 #| fig-cap: "Figure: Comparison of confirmed cases and vaccination rates per million (by country)"
 merge1 |> 
@@ -145,18 +149,20 @@ merge1 |>
   labs(title = "COVID-19 Cases and Vaccination Rates per Million",
        y = "Per Million (7-day average)", x = "Day") +
   theme_minimal() + theme(
-    plot.title = element_text(size = 20, face = "bold"),
+    plot.title = element_text(size = 17, face = "bold"),
     axis.title = element_text(size = 17),
     axis.text = element_text(size = 17),
     legend.title = element_text(size = 18),
     legend.text = element_text(size = 18),
     strip.text = element_text(size = 17, face = "bold")
   )
+
 ```
 
 In order to more clearly understand the temporal relationship between COVID-19 outbreaks and vaccination, we constructed the @fig-vacc-vs-case, which displays the number of daily diagnoses per million people overlaid on the number of vaccinations, arranged faceted by country. We can see that the number of confirmed cases increased before the vaccination rate started to rise. This means that many governments began to roll out vaccines after the number of cases went up. This figure is useful for visualizing the timing between outbreaks and vaccination responses. It helps us see whether vaccines were given early or late during a wave.
 
-```{r, fig.width=14, fig.height=10}
+```{r, fig.width=12, fig.height=4}
+#| echo: false
 #| label: fig-daily-change
 #| fig-cap: "	Figure: Daily changes in confirmed cases and vaccine doses per million"
 merge_diff = merge1 |> 
@@ -175,18 +181,20 @@ merge_diff |>
   labs(title = "Daily Change in Vaccination and Confirmed Cases",
        y = "Daily Change (per million)", x = "Date") +
   theme_minimal() + theme(
-    plot.title = element_text(size = 20, face = "bold"),
+    plot.title = element_text(size = 17, face = "bold"),
     axis.title = element_text(size = 17),
     axis.text = element_text(size = 17),
     legend.title = element_text(size = 18),
     legend.text = element_text(size = 18),
     strip.text = element_text(size = 17, face = "bold")
   )
+
 ```
 
 @fig-daily-change highlights the daily change in confirmed cases and vaccinations. It shows how much each number went up or down each day. We can see during major outbreaks, the daily changes were large. There were big increases in confirmed cases, and then some countries also had big jumps in vaccination. This figure helps us understand how fast things changed. It also shows how quickly some countries reacted when cases increased.
 
-```{r}
+```{r, fig.width=12, fig.height=4}
+#| echo: false
 #| label: fig-lag-effect
 #| fig-cap: "Figure: Lagged vaccination rate vs confirmed cases (7-day lag, by country)"
 merge1_lag = merge1 |> 
@@ -201,14 +209,22 @@ ggplot(merge1_lag, aes(x = vacc_7, y = Confirmed_per_million)) +
   labs(title = "Effect of Vaccination (Lag 7days) on COVID-19 Confirmed Cases",
        x = "Vaccination Rate (Lagged 7Days)", 
        y = "Confirmed Cases per Million") +
-  theme_minimal()
+  theme_minimal() + theme(
+    plot.title = element_text(size = 17, face = "bold"),
+    axis.title = element_text(size = 17),
+    axis.text = element_text(size = 17),
+    legend.title = element_text(size = 18),
+    legend.text = element_text(size = 18),
+    strip.text = element_text(size = 17, face = "bold")
+  )
 ```
 
 To understand if vaccines helped reduce new COVID-19 cases, we looked at vaccination rates with a 7-day lag. This means we checked if higher vaccination numbers one week earlier were linked to fewer new cases later. The @fig-lag-effect shows that in countries like the US and UK, when more people were vaccinated, new case numbers often went down after a few days. This suggests that vaccines helped slow the spread of the virus.
 
 However, as Our World in Data points out, vaccines became less effective in stopping infections over time, especially when new variants appeared. Even so, they still helped reduce the number of serious cases and deaths.
 
-```{r, fig.width=14, fig.height=10}
+```{r, fig.width=12, fig.height=4}
+#| echo: false
 #| label: fig-case-death-vacc
 #| fig-cap: "Figure: COVID-19 confirmed case-death rates-vaccination by country)"
 merge2 = left_join(merge1, death_long |>
@@ -224,9 +240,8 @@ merge2 |>
   facet_wrap( ~ Country, scales = "free_y") +
   labs(title = "COVID-19 Cases, Deaths, and Vaccination Rates per Million",
        y = "Per Million", x = "Day") +
-  
   theme_minimal() + theme(
-    plot.title = element_text(size = 20, face = "bold"),
+    plot.title = element_text(size = 17, face = "bold"),
     axis.title = element_text(size = 17),
     axis.text = element_text(size = 17),
     legend.title = element_text(size = 18),
@@ -242,6 +257,21 @@ This pattern suggests that vaccination programs, alongside other public health m
 The trend is less clear in countries with shorter or later vaccination coverage, such as India, possibly due to data gaps or other healthcare constraints.
 
 We found that countries with early and wide vaccination had better control of the virus. In these places, case numbers went down after people started getting vaccinated. Later waves of COVID-19 caused fewer deaths than early ones. This shows that vaccines helped not only to stop the spread, but also to stop people from dying. Vaccination made a big difference.
+
+# Results {#sec-results}
+
+The daily changes in COVID-19 case and vaccination rates in @fig-daily-change shows that large outbreaks triggered spikes in vaccination, indicating reactive public health responses. Similarly, @fig-vacc-vs-case, shows that vaccines were often given after case numbers had already started rising.
+
+In early stages of the pandemic, before vaccination were widely available, the number of deaths closely followed the number of confirmed cases. However, as vaccination rates increased, the gap between cases and deaths widened, suggesting that vaccines helped reduce the severity of outcomes as per @fig-case-death-vacc illustrates trends in confirmed COVID-19 cases, deaths, and vaccination rates per million across six countries.
+
+In countries like the United States and United Kingdom, higher vaccination rates were often followed by declines in new case numbers. This is also shown in @fig-lag-effect, which used a 7-day delay to study the effect of vaccines. It suggests vaccines helped slow down the spread of the virus soon after rollout.
+
+The overall findings show that vaccination contributed to lower death rates and reduced the impact of major outbreaks when implemented early and consistently.
+
+# Discussion {#sec-discussion}
+
+1.  Case rates depend heavily on how much testing was available and how consistently it was used. Some countries, particularly in early stages of the pandemic, had limited testing capacity, meaning many infections may have gone unrecorded. In contrast, countries with widespread and frequent testing likely reported more cases, even among people with mild or no symptoms.
+2.  The differences in how countries report COVID-19 deaths may affect the accuracy of comparisons. For example, some countries may only record deaths that occur in hospitals, while others include deaths that happen at home. This means that countries with more limited reporting systems could appear to have lower death rates, even if the actual impact was higher.
 
 # Conclusion {#sec-conclusion}
 
