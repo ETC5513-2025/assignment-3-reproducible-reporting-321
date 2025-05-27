@@ -35,20 +35,39 @@ Comparing how COVID-19 changed over time in each country, and whether vaccines h
     -   COVID-19 deaths
     -   Vaccination rates
 -   **Source:** [Our World in Data](https://ourworldindata.org/)
--   **Time Period:** February 2020 – February 2023
+-   **Time Period:** 
+ - February 2020 – February 2023
+ - January 16, 2021 – September 4, 2022 (Vaccination Rates)
 
 ------------------------------------------------------------------------
 
+## Methods
+
+::: {style="font-size: 80%;"}
+1. **Data Source**: 
+COVID-19 cases, deaths, and vaccination rates data from Our World in Data.
+
+2. **Data Cleaning & Processing:** 
+filtering and cleaning data using R, removing missing values.
+
+3. **Selected Countries for Comparison:** 
+Canada, France, Germany, India, the UK, and the US.
+
+4. **Time periods:** 
+were aligned to ensure fair comparisons between countries.
+
+5. **Analysis:** 
+created visualizations to compare trends across cases, deaths, and vaccinations.
+:::
+---
+
 ## Results Summary (will add the plots)
 
--   **Vaccination Rolled Out After Cases Rose**\
-    → Countries often increased vaccination in response to rising case numbers.
+-   **Vaccination Rolled Out After Cases Rose**
 
--   **Vaccines Helped Reduce Deaths Over Time**\
-    → As vaccination increased, deaths rose more slowly than cases.
+-   **Vaccines Helped Reduce Deaths Over Time**
 
--   **Vaccines Slowed the Spread After Rollout**\
-    → In places like the US and UK, cases dropped shortly after vaccination rates increased.
+-   **Vaccines Slowed the Spread After Rollout**
 
 ---
 
