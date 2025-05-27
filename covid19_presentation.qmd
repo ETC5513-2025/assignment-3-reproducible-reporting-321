@@ -11,33 +11,45 @@ format:
 
 ## Problem Introduction
 
-::: {style="font-size: 60%;"}
--   COVID-19 began spreading worldwide in early 2020, affecting countries in different ways.
--   Governments responded with testing, lockdowns, and vaccines, but results varied.
--   This project focuses on:
-    -   **Canada**
-    -   **France**
-    -   **Germany**
-    -   **India**
-    -   **United Kingdom**
-    -   **United States**
+::: {.fragment style="font-size: 60%;"}
+- COVID-19 began spreading worldwide in early 2020, affecting countries in different ways.
+- Governments responded with testing, lockdowns, and vaccines, but results varied.
+- This project focuses on:
+    - **Canada**
+    - **France**
+    - **Germany**
+    - **India**
+    - **United Kingdom**
+    - **United States**
+:::
 
-**Goal:**\
+::: {.fragment style="font-size: 60%;"}
+**Goal:**  
 Comparing how COVID-19 changed over time in each country, and whether vaccines helped reduce cases and deaths.
 :::
+
 
 ------------------------------------------------------------------------
 
 ## Dataset Description
 
--   **Data Includes:**
-    -   Daily confirmed COVID-19 cases
-    -   COVID-19 deaths
-    -   Vaccination rates
--   **Source:** [Our World in Data](https://ourworldindata.org/)
--   **Time Period:** 
-    - February 2020 – February 2023
+::: {.fragment}
+- **Data Includes:**
+    - Daily confirmed COVID-19 cases
+    - COVID-19 deaths
+    - Vaccination rates
+:::
+
+::: {.fragment}
+- **Source:** [Our World in Data](https://ourworldindata.org/)
+:::
+
+::: {.fragment}
+- **Time Period:**  
+    - February 2020 – February 2023  
     - January 16, 2021 – September 4, 2022 (Vaccination Rates)
+:::
+
 
 ------------------------------------------------------------------------
 
@@ -73,10 +85,23 @@ created visualizations to compare trends across cases, deaths, and vaccinations.
 
 ## Conclusion
 
-After analyzing the COVID-19 cases, deaths, and vaccination data from six different countries
+::: {.fragment}
+After analyzing the COVID-19 cases, deaths, and vaccination data from six different countries.
+:::
 
+::: {.fragment}
 **Key Findings:**
+:::
 
-1.  Case numbers often rose before widespread vaccination began.
-2.  Major outbreaks led to sharp daily changes in both cases and vaccine doses.
-3.  A 7-day lag analysis showed that higher vaccination rates were followed by fewer new cases, especially where rollout was early and sustained.
+::: {.fragment}
+1. Case numbers often rose before widespread vaccination began.
+:::
+
+::: {.fragment}
+2. Major outbreaks led to sharp daily changes in both cases and vaccine doses.
+:::
+
+::: {.fragment}
+3. A 7-day lag analysis showed that higher vaccination rates were followed by fewer new cases, especially where rollout was early and sustained.
+:::
+
