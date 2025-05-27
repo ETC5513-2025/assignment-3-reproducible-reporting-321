@@ -14,7 +14,7 @@ editor: visual
 knitr::opts_chunk$set(
   warning = FALSE,
   message = FALSE,
-  echo = TRUE
+  echo = FALSE
 )
 ```
 
@@ -64,9 +64,9 @@ We then merged the confirmed case dataset with the vaccination dataset by countr
 library(tidyverse)
 library(lubridate)
 library(ggplot2)
-case = read_csv("COVID-19 confirmed case per million.csv")
-death = read_csv("Total confirmed deaths due to COVID-19 per 100,000 people.csv")
-vaccine = read_csv("COVID-19 vaccination.csv")
+case = read_csv("data/COVID-19 confirmed case per million.csv")
+death = read_csv("data/Total confirmed deaths due to COVID-19 per 100,000 people.csv")
+vaccine = read_csv("data/COVID-19 vaccination.csv")
 
 names(case)[1] <- "Day"
 names(vaccine)[1] <- "Day"
@@ -220,10 +220,10 @@ During the project, we analyzed numbers of confirmed cases, deaths and vaccinati
 
 Our findings highlight three key observations:
 
-1. In most countries, the number of cases increased quite a bit before widespread vaccination took place.
+1.  In most countries, the number of cases increased quite a bit before widespread vaccination took place.
 
-2. During major outbreaks, both case numbers and vaccine doses administered showed significant daily fluctuations.
+2.  During major outbreaks, both case numbers and vaccine doses administered showed significant daily fluctuations.
 
-3. A 7-day lag analysis indicated that rising vaccination rates were followed by a reduction in new case numbers. Areas where vaccination started early and was kept up showed the strongest impact.
+3.  A 7-day lag analysis indicated that rising vaccination rates were followed by a reduction in new case numbers. Areas where vaccination started early and was kept up showed the strongest impact.
 
 These insights suggest that timely and sustained vaccination campaigns played a crucial role in reducing transmission and saving lives. Future public health responses should prioritize early vaccine deployment during pandemics.
