@@ -1,24 +1,36 @@
 ---
 title: "COVID-19 Impact Analysis"
-author: "Lin Qi, Midhun Unnikrishnan, Sumintra Boonmat"
+author:
+  - name: "Lin Qi"
+  - name: "Midhun Unnikrishnan"
+  - name: "Sumintra Boonmat"
 format: revealjs
 theme: simple
 ---
 
-## COVID-19 Impact Analysis: Cases, Deaths, and Vaccination Rates Across Canada, France, Germany, India, the United Kingdom, and the United States.**  
-
-Group members:  
-- Lin Qi  
-- Midhun Unnikrishnan  
-- Sumintra Boonmat
+## 
+**COVID-19 Impact Analysis:**<br>
+Cases, Deaths, and Vaccination Rates across<br>
+Canada, France, Germany, India, the United Kingdom, and the United States.
 
 ---
 
 ## Problem Introduction
 
-- COVID-19 has impacted countries differently.
-- This project compares trends in confirmed cases, deaths, and vaccinations across:
-  - Canada, France, Germany, India, UK, and USA
-- Goal: Understand the effects of vaccination on pandemic outcomes.
+- COVID-19 began spreading worldwide in early 2020, affecting each country differently.
+- Governments responded with things like testing, lockdowns, and vaccines, but not all countries had the same results.
+- This project focusing on six countries:  
+**Canada, France, Germany, India, the United Kingdom, and the United States.**
+
+**Goal**
+- we aim to compare how COVID-19 changed over time in each country, and whether vaccines helped reduce the number of cases and deaths.
 
 ---
+## Dataset Description
+
+- Source: [Our World in Data](https://ourworldindata.org/)
+- Data types:
+  - Daily confirmed COVID-19 cases
+  - COVID-19 deaths
+  - Vaccination rates
+- Period analyzed: Feb 2020 – Feb 2023
