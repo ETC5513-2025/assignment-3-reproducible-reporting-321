@@ -24,7 +24,7 @@ knitr::opts_chunk$set(
 
 This report compares the confirmed COVID-19 case number, death rates, and vaccination rates across six countries: Canada, France, Germany, India, the United Kingdom and the United States. It analyzes time series data from Feb 2020 to July 2023, aiming to explore the extent to which vaccination efforts have contributed to pandemic control.
 
-# Introduction {#sec-intro}
+# Introduction
 
 <!-- linqi70 -->
 
@@ -214,16 +214,26 @@ The trend is less clear in countries with shorter or later vaccination coverage,
 
 We found that countries with early and wide vaccination had better control of the virus. In these places, case numbers went down after people started getting vaccinated. Later waves of COVID-19 caused fewer deaths than early ones. This shows that vaccines helped not only to stop the spread, but also to stop people from dying. Vaccination made a big difference.
 
+# Results {#sec-results}
+
+The daily changes in COVID-19 case and vaccination rates in @fig-daily-change shows that large outbreaks triggered spikes in vaccination, indicating reactive public health responses. Similarly, @fig-vacc-vs-case, shows that vaccines were often given after case numbers had already started rising.
+
+In early stages of the pandemic, before vaccination were widely available, the number of deaths closely followed the number of confirmed cases. However, as vaccination rates increased, the gap between cases and deaths widened, suggesting that vaccines helped reduce the severity of outcomes as per @fig-case-death-vacc illustrates trends in confirmed COVID-19 cases, deaths, and vaccination rates per million across six countries.
+
+In countries like the United States and United Kingdom, higher vaccination rates were often followed by declines in new case numbers. This is also shown in @fig-lag-effect, which used a 7-day delay to study the effect of vaccines. It suggests vaccines helped slow down the spread of the virus soon after rollout.
+
+The overall findings show that vaccination contributed to lower death rates and reduced the impact of major outbreaks when implemented early and consistently.
+
 # Conclusion {#sec-conclusion}
 
 During the project, we analyzed numbers of confirmed cases, deaths and vaccinations in Canada, France, Germany, India, the UK and the US.
 
 Our findings highlight three key observations:
 
-1. In most countries, the number of cases increased quite a bit before widespread vaccination took place.
+1.  In most countries, the number of cases increased quite a bit before widespread vaccination took place.
 
-2. During major outbreaks, both case numbers and vaccine doses administered showed significant daily fluctuations.
+2.  During major outbreaks, both case numbers and vaccine doses administered showed significant daily fluctuations.
 
-3. A 7-day lag analysis indicated that rising vaccination rates were followed by a reduction in new case numbers. Areas where vaccination started early and was kept up showed the strongest impact.
+3.  A 7-day lag analysis indicated that rising vaccination rates were followed by a reduction in new case numbers. Areas where vaccination started early and was kept up showed the strongest impact.
 
 These insights suggest that timely and sustained vaccination campaigns played a crucial role in reducing transmission and saving lives. Future public health responses should prioritize early vaccine deployment during pandemics.
