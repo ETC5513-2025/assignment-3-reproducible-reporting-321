@@ -2,13 +2,24 @@
 title: "COVID-19 Impact Analysis: Cases, Deaths, and Vaccination Rates Across Canada, France, Germany, India, the United Kingdom, and the United States."
 author: "Lin Qi, Midhun Unnikrishnan, and Sumintra Boonmat"
 format:
-  html:
+  pdf:
     toc: true
     toc-depth: 2
-    fig_caption: true
     number-sections: true
+    fig-caption: true
+    mainfont: "Times New Roman"
+    fontsize: 11pt
+    linestretch: 1.3
+    colorlinks: true
+    linkcolor: blue
+    urlcolor: blue
+    citecolor: blue
+    geometry: margin=1in
+    include-in-header: "styles.tex"
 editor: visual
 ---
+
+
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(
@@ -122,7 +133,7 @@ vacc_long |>
 
 @fig-vacc-trend shows the 7-day average vaccination doses per million across the six countries. Canada, France, Germany, the UK, and the US all ramped up vaccination rapidly during early 2021, while India lagged slightly behind, with a noticeable delay in rollout. @tbl-vacc-summary confirms the start and end dates of vaccine data coverage, showing that most countries began vaccination efforts in late December 2020. This aligns with Our World in Data’s findings that vaccine rollout was uneven globally, with lower coverage in lower-income regions.
 
-```{r}
+```{r, fig.width=14, fig.height=10}
 #| label: fig-vacc-vs-case
 #| fig-cap: "Figure: Comparison of confirmed cases and vaccination rates per million (by country)"
 merge1 |> 
@@ -133,12 +144,19 @@ merge1 |>
   facet_wrap(~Country, scales = "free_y") +
   labs(title = "COVID-19 Cases and Vaccination Rates per Million",
        y = "Per Million (7-day average)", x = "Day") +
-  theme_minimal()
+  theme_minimal() + theme(
+    plot.title = element_text(size = 20, face = "bold"),
+    axis.title = element_text(size = 17),
+    axis.text = element_text(size = 17),
+    legend.title = element_text(size = 18),
+    legend.text = element_text(size = 18),
+    strip.text = element_text(size = 17, face = "bold")
+  )
 ```
 
 In order to more clearly understand the temporal relationship between COVID-19 outbreaks and vaccination, we constructed the @fig-vacc-vs-case, which displays the number of daily diagnoses per million people overlaid on the number of vaccinations, arranged faceted by country. We can see that the number of confirmed cases increased before the vaccination rate started to rise. This means that many governments began to roll out vaccines after the number of cases went up. This figure is useful for visualizing the timing between outbreaks and vaccination responses. It helps us see whether vaccines were given early or late during a wave.
 
-```{r}
+```{r, fig.width=14, fig.height=10}
 #| label: fig-daily-change
 #| fig-cap: "	Figure: Daily changes in confirmed cases and vaccine doses per million"
 merge_diff = merge1 |> 
@@ -156,7 +174,14 @@ merge_diff |>
   facet_wrap(~Country, scales = "free_y") +
   labs(title = "Daily Change in Vaccination and Confirmed Cases",
        y = "Daily Change (per million)", x = "Date") +
-  theme_minimal()
+  theme_minimal() + theme(
+    plot.title = element_text(size = 20, face = "bold"),
+    axis.title = element_text(size = 17),
+    axis.text = element_text(size = 17),
+    legend.title = element_text(size = 18),
+    legend.text = element_text(size = 18),
+    strip.text = element_text(size = 17, face = "bold")
+  )
 ```
 
 @fig-daily-change highlights the daily change in confirmed cases and vaccinations. It shows how much each number went up or down each day. We can see during major outbreaks, the daily changes were large. There were big increases in confirmed cases, and then some countries also had big jumps in vaccination. This figure helps us understand how fast things changed. It also shows how quickly some countries reacted when cases increased.
@@ -183,7 +208,7 @@ To understand if vaccines helped reduce new COVID-19 cases, we looked at vaccina
 
 However, as Our World in Data points out, vaccines became less effective in stopping infections over time, especially when new variants appeared. Even so, they still helped reduce the number of serious cases and deaths.
 
-```{r}
+```{r, fig.width=14, fig.height=10}
 #| label: fig-case-death-vacc
 #| fig-cap: "Figure: COVID-19 confirmed case-death rates-vaccination by country)"
 merge2 = left_join(merge1, death_long |>
@@ -199,7 +224,15 @@ merge2 |>
   facet_wrap( ~ Country, scales = "free_y") +
   labs(title = "COVID-19 Cases, Deaths, and Vaccination Rates per Million",
        y = "Per Million", x = "Day") +
-  theme_minimal()
+  
+  theme_minimal() + theme(
+    plot.title = element_text(size = 20, face = "bold"),
+    axis.title = element_text(size = 17),
+    axis.text = element_text(size = 17),
+    legend.title = element_text(size = 18),
+    legend.text = element_text(size = 18),
+    strip.text = element_text(size = 17, face = "bold")
+  )
 ```
 
 @fig-case-death-vacc compares the trends of confirmed cases, death rates, and vaccination rates across six countries. Earlier waves—before widespread vaccination—showed a much closer link between cases and deaths.
