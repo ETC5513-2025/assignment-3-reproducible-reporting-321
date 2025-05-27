@@ -1,37 +1,63 @@
 ---
-title: "COVID-19 Impact Analysis"
+title: 'COVID-19 Impact Analysis: Cases, Deaths, and Vaccination Rates'
 author:
-  - name: "Lin Qi"
-  - name: "Midhun Unnikrishnan"
-  - name: "Sumintra Boonmat"
-format: revealjs
-theme: simple
----
-
-## 
-**COVID-19 Impact Analysis:**<br>
-Cases, Deaths, and Vaccination Rates across<br>
-Canada, France, Germany, India, the United Kingdom, and the United States.
-
+  - name: 'Lin Qi'
+  - name: 'Midhun Unnikrishnan'
+  - name: 'Sumintra Boonmat'
+format:
+  revealjs:
+    theme: simple
 ---
 
 ## Problem Introduction
 
-- COVID-19 began spreading worldwide in early 2020, affecting each country differently.
-- Governments responded with things like testing, lockdowns, and vaccines, but not all countries had the same results.
-- This project focusing on six countries:  
-**Canada, France, Germany, India, the United Kingdom, and the United States.**
+::: {style="font-size: 60%;"}
+-   COVID-19 began spreading worldwide in early 2020, affecting countries in different ways.
+-   Governments responded with testing, lockdowns, and vaccines, but results varied.
+-   This project focuses on:
+    -   **Canada**
+    -   **France**
+    -   **Germany**
+    -   **India**
+    -   **United Kingdom**
+    -   **United States**
 
-**Goal**
-- we aim to compare how COVID-19 changed over time in each country, and whether vaccines helped reduce the number of cases and deaths.
+**Goal:**\
+Comparing how COVID-19 changed over time in each country, and whether vaccines helped reduce cases and deaths.
+:::
 
----
+------------------------------------------------------------------------
+
 ## Dataset Description
 
-- Data:
-  - Daily confirmed COVID-19 cases
-  - COVID-19 deaths
-  - Vaccination rates
-- Source: [Our World in Data](https://ourworldindata.org/)
-- Period analyzed: Feb 2020 – Feb 2023
+-   **Data Includes:**
+    -   Daily confirmed COVID-19 cases
+    -   COVID-19 deaths
+    -   Vaccination rates
+-   **Source:** [Our World in Data](https://ourworldindata.org/)
+-   **Time Period:** February 2020 – February 2023
 
+------------------------------------------------------------------------
+
+## Results Summary (will add the plots)
+
+-   **Vaccination Rolled Out After Cases Rose**\
+    → Countries often increased vaccination in response to rising case numbers.
+
+-   **Vaccines Helped Reduce Deaths Over Time**\
+    → As vaccination increased, deaths rose more slowly than cases.
+
+-   **Vaccines Slowed the Spread After Rollout**\
+    → In places like the US and UK, cases dropped shortly after vaccination rates increased.
+
+---
+
+## Conclusion
+
+After analyzing the COVID-19 cases, deaths, and vaccination data from six different countries
+
+**Key Findings:**
+
+1.  Case numbers often rose before widespread vaccination began.
+2.  Major outbreaks led to sharp daily changes in both cases and vaccine doses.
+3.  A 7-day lag analysis showed that higher vaccination rates were followed by fewer new cases, especially where rollout was early and sustained.
