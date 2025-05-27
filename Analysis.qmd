@@ -2,7 +2,7 @@
 title: "COVID-19 Impact Analysis: Cases, Deaths, and Vaccination Rates Across Canada, France, Germany, India, the United Kingdom, and the United States."
 author: "Lin Qi, Midhun Unnikrishnan, and Sumintra Boonmat"
 format:
-  pdf:
+  html:
     toc: true
     toc-depth: 2
     fig_caption: true
@@ -20,15 +20,11 @@ knitr::opts_chunk$set(
 
 # Executive Summary {#sec-intro}
 
-<!-- linqi70 -->
-
-This report compares the confirmed COVID-19 case number, death rates, and vaccination rates across six countries: Canada, France, Germany, India, the United Kingdom and the United States. It analyzes time series data from Feb 2020 to July 2023, aiming to explore the extent to which vaccination efforts have contributed to pandemic control.
+This report details a study of COVID-19 confirmed cases, deaths, and vaccination rates across Canada, France, Germany, India, the UK, and the US from February 2020 to July 2023. It shows the impact of vaccination on pandemic outcomes. Studies state that countries, including the US and UK, saw a decrease in both cases and deaths when vaccination uptake began at the onset of the pandemic. This analysis shows how vaccination has a proportionately large effect relative to decreasing pandemic numbers.
 
 # Introduction {#sec-intro}
 
-<!-- linqi70 -->
-
-Since early 2020, COVID-19 has impacted countries across the world with varying intensity. As governments responded with testing, lockdowns, and eventually mass vaccination, it became clear that outcomes differed significantly between nations. This study focuses on France, Germany, India, Canada, the UK, and the US, aiming to provide a comparative understanding of how COVID-19 evolved in each country and whether vaccination efforts aligned with reduced fatality rates.
+Since early 2020, countries around the globe have experienced COVID-19 to different extents. Governments responded with measures like testing, lockdowns, and mass vaccination, but the outcomes varied significantly. This study compares Canada, France, Germany, India, the UK, and the US to understand the contrast in outcomes. It researches time series data on confirmed cases, deaths, and vaccination rates from 2020 to 2023. The primary question focuses on the role of vaccination in decreasing case numbers and mortality rates. Vaccination programs started at varying times, with richer nations beginning earlier. For example, Canada and the United States started vaccinations in December 2020, while India began in January 2021. This study aims to provide insight into successful responses to the pandemic. It highlights the importance of vaccination in reducing the spread and severity of the virus.
 
 # Methodology {#sec-method}
 
@@ -227,3 +223,7 @@ Our findings highlight three key observations:
 3.  A 7-day lag analysis indicated that rising vaccination rates were followed by a reduction in new case numbers. Areas where vaccination started early and was kept up showed the strongest impact.
 
 These insights suggest that timely and sustained vaccination campaigns played a crucial role in reducing transmission and saving lives. Future public health responses should prioritize early vaccine deployment during pandemics.
+
+# Recommendations {#sec-recommendations}
+
+Given the findings, we suggest that further pandemic responses concentrate on spreading vaccinations quickly, especially in lower-income parts of the world like India, in order to reduce chances for breaks in case numbers. As seen in @fig-daily-change, rather than waiting for a surge, Governments should consider establishing proactive vaccination schemes, ensuring vaccines are deployed before a high number of cases occur. Having comparable ways of reporting data in different nations allows for better assessment and guides effective policy creation. Finally such campaigns need to make sure vaccination efforts continue, because sustained work in the US and UK greatly reduced the number of people affected and the death rate, as shown in @fig-case-death-vacc.
