@@ -36,8 +36,8 @@ Comparing how COVID-19 changed over time in each country, and whether vaccines h
     -   Vaccination rates
 -   **Source:** [Our World in Data](https://ourworldindata.org/)
 -   **Time Period:** 
- - February 2020 – February 2023
- - January 16, 2021 – September 4, 2022 (Vaccination Rates)
+    - February 2020 – February 2023
+    - January 16, 2021 – September 4, 2022 (Vaccination Rates)
 
 ------------------------------------------------------------------------
 
