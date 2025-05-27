@@ -224,6 +224,11 @@ In countries like the United States and United Kingdom, higher vaccination rates
 
 The overall findings show that vaccination contributed to lower death rates and reduced the impact of major outbreaks when implemented early and consistently.
 
+# Discussion {#sec-discussion}
+
+1.  Case rates depend heavily on how much testing was available and how consistently it was used. Some countries, particularly in early stages of the pandemic, had limited testing capacity, meaning many infections may have gone unrecorded. In contrast, countries with widespread and frequent testing likely reported more cases, even among people with mild or no symptoms.
+2.  The differences in how countries report COVID-19 deaths may affect the accuracy of comparisons. For example, some countries may only record deaths that occur in hospitals, while others include deaths that happen at home. This means that countries with more limited reporting systems could appear to have lower death rates, even if the actual impact was higher.
+
 # Conclusion {#sec-conclusion}
 
 During the project, we analyzed numbers of confirmed cases, deaths and vaccinations in Canada, France, Germany, India, the UK and the US.
