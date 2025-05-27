@@ -28,9 +28,10 @@ Canada, France, Germany, India, the United Kingdom, and the United States.
 ---
 ## Dataset Description
 
-- Source: [Our World in Data](https://ourworldindata.org/)
-- Data types:
+- Data:
   - Daily confirmed COVID-19 cases
   - COVID-19 deaths
   - Vaccination rates
+- Source: [Our World in Data](https://ourworldindata.org/)
 - Period analyzed: Feb 2020 – Feb 2023
+
