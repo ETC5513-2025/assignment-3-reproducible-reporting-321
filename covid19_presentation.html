@@ -344,7 +344,7 @@
 </ul>
 </div>
 <div class="fragment">
-<span style="font-size: 70%; font-weight: bold;">Research question</span>
+<p><span style="font-size: 70%; font-weight: bold;">Research question</span></p>
 <div style="border: 2px solid #111184; border-radius: 8px; padding: 15px; font-size: 60%; background-color: #f5f5f5;">
 <p>How COVID-19 changed over time across six different countries, and whether vaccines helped reduce cases and deaths.</p>
 </div>
@@ -385,9 +385,8 @@
 <ul>
 <li><strong>Time Period:</strong>
 <ul>
-<li>February 2020 – February 2023<br>
-</li>
-<li>January 16, 2021 – September 4, 2022 (Vaccination Rates)</li>
+<li>Cases &amp; death rates: February 2020 – February 2023</li>
+<li>Vaccination rates: January 2021 – September 2022</li>
 </ul></li>
 </ul>
 </div>
@@ -395,50 +394,133 @@
 <section id="methods" class="slide level2">
 <h2><span style="color: #111184;">Methods</span></h2>
 <hr style="border: 1px solid #f5f5f5;">
-<div class="fragment" style="font-size: 80%;">
+<div class="fragment" style="font-size: 70%;">
 <ul>
 <li><p><strong>Data Source</strong>: COVID-19 cases, deaths, and vaccination rates data from Our World in Data.</p></li>
 <li><p><strong>Data Cleaning &amp; Processing:</strong> filtering and cleaning data using R, removing missing values.</p></li>
 </ul>
 </div>
-<div class="fragment" style="font-size: 80%;">
+<div class="fragment" style="font-size: 70%;">
 <ul>
 <li><p><strong>Selected Countries for Comparison:</strong> Canada, France, Germany, India, the UK, and the US.</p></li>
-<li><p><strong>Time periods:</strong> were aligned to ensure fair comparisons between countries.</p></li>
+<li><p><strong>Time periods:</strong> were aligned to ensure fair comparisons between countries.</p>
+<ul>
+<li>Cases &amp; death rates: February 2020 – February 2023</li>
+<li>Vaccination rates: January 2021 – September 2022</li>
+</ul></li>
 <li><p><strong>Analysis:</strong> created visualizations to compare trends across cases, deaths, and vaccinations.</p></li>
 </ul>
 </div>
 </section>
-<section id="results-summary-will-add-the-plots" class="slide level2">
-<h2>Results Summary (will add the plots)</h2>
+<section id="result-summary" class="slide level2">
+<h2><span style="color: #111184;">Result Summary</span></h2>
+<hr style="border: 1px solid #f5f5f5; margin-bottom: 1.5em;">
+<div class="columns">
+<div class="column" style="width:60%;">
+<p><img data-src="images/cases_vaccination.png" style="width:100.0%"></p>
+</div><div class="column" style="font-size: 60%;">
+<div style="font-weight: bold; font-size: 80%; margin-bottom: 0.6em;">
+<p>Vaccination Rolled Out After Cases Rose</p>
+</div>
 <ul>
-<li><p><strong>Vaccination Rolled Out After Cases Rose</strong></p></li>
-<li><p><strong>Vaccines Helped Reduce Deaths Over Time</strong></p></li>
-<li><p><strong>Vaccines Slowed the Spread After Rollout</strong></p></li>
+<li>This figure overlays confirmed COVID-19 case rates and vaccination rates.<br>
+</li>
+<li>Case surges often occurred <strong>before</strong> vaccination began.<br>
+</li>
+<li>Many countries began vaccinating <strong>after</strong> major outbreaks had already started.</li>
 </ul>
+</div></div>
+</section>
+<section id="result-summary-1" class="slide level2">
+<h2><span style="color: #111184;">Result Summary</span></h2>
+<hr style="border: 1px solid #f5f5f5; margin-bottom: 1.5em;">
+<div class="columns">
+<div class="column" style="width:60%;">
+<p><img data-src="images/cases_deaths_vaccination.png" style="width:100.0%"></p>
+</div><div class="column" style="font-size: 60%;">
+<div style="font-weight: bold; font-size: 80%; margin-bottom: 0.6em;">
+<p>Vaccines Helped Reduce Deaths Over Time</p>
+</div>
+<ul>
+<li>This plot compares COVID-19 cases, deaths, and vaccination rates.<br>
+</li>
+<li>As vaccination increased, deaths did <strong>not rise proportionally</strong> with cases.<br>
+</li>
+<li>This was especially true in <strong>later waves</strong>, showing that vaccines helped reduce severity.</li>
+</ul>
+</div></div>
+</section>
+<section id="result-summary-2" class="slide level2">
+<h2><span style="color: #111184;">Result Summary</span></h2>
+<hr style="border: 1px solid #f5f5f5; margin-bottom: 1.5em;">
+<div class="columns">
+<div class="column" style="width:60%;">
+<p><img data-src="images/lagged_vaccination_vs_cases.png" style="width:100.0%"></p>
+</div><div class="column" style="font-size: 60%;">
+<div style="font-weight: bold; font-size: 80%; margin-bottom: 0.6em;">
+<p>Vaccines Slowed the Spread After Rollout</p>
+</div>
+<ul>
+<li>This figure shows a <strong>7-day lag analysis</strong> between vaccination rates and new case numbers.<br>
+</li>
+<li>In countries with higher vaccination, new cases <strong>declined shortly after rollout</strong>.<br>
+</li>
+<li>The trend suggests vaccines helped <strong>reduce transmission</strong> within a short time window.</li>
+</ul>
+</div></div>
 </section>
 <section id="conclusion" class="slide level2">
-<h2>Conclusion</h2>
-<div class="fragment">
+<h2><span style="color: #111184;">Conclusion</span></h2>
+<hr style="border: 1px solid #f5f5f5;">
+<div class="fragment" style="font-size: 80%;">
 <p>After analyzing the COVID-19 cases, deaths, and vaccination data from six different countries.</p>
 </div>
-<div class="fragment">
+<div class="fragment" style="font-size: 80%;">
 <p><strong>Key Findings:</strong></p>
 </div>
-<div class="fragment">
+<div class="fragment" style="font-size: 80%;">
 <ol type="1">
 <li>Case numbers often rose before widespread vaccination began.</li>
 </ol>
 </div>
-<div class="fragment">
+<div class="fragment" style="font-size: 80%;">
 <ol start="2" type="1">
 <li>Major outbreaks led to sharp daily changes in both cases and vaccine doses.</li>
 </ol>
 </div>
-<div class="fragment">
+<div class="fragment" style="font-size: 80%;">
 <ol start="3" type="1">
 <li>A 7-day lag analysis showed that higher vaccination rates were followed by fewer new cases, especially where rollout was early and sustained.</li>
 </ol>
+</div>
+</section>
+<section id="recomendations" class="slide level2">
+<h2><span style="color: #111184;">Recomendations</span></h2>
+<hr style="border: 1px solid #f5f5f5;">
+<div class="fragment" style="font-size: 80%;">
+<ul>
+<li>Start vaccines <strong>rapidly and early</strong>, especially in lower-income regions like India.</li>
+</ul>
+</div>
+<div class="fragment" style="font-size: 80%;">
+<ul>
+<li>Use <strong>proactive vaccination programs</strong> instead of waiting for case surges.</li>
+</ul>
+</div>
+<div class="fragment" style="font-size: 80%;">
+<ul>
+<li>Establish <strong>standardized global data reporting</strong> to enable accurate comparisons and policy decisions.</li>
+</ul>
+</div>
+<div class="fragment" style="font-size: 80%;">
+<ul>
+<li>Ensure <strong>sustained vaccination efforts</strong> over time, not just one-time campaigns.</li>
+</ul>
+</div>
+<div class="fragment" style="font-size: 80%;">
+<ul>
+<li>Long-term vaccine coverage, as seen in the <strong>US and UK</strong>, helped lower both case severity and death rates.</li>
+</ul>
 </div>
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
@@ -497,7 +579,7 @@
         progress: true,
 
         // Display the page number of the current slide
-        slideNumber: false,
+        slideNumber: 'c/t',
 
         // 'all', 'print', or 'speaker'
         showSlideNumber: 'all',
