@@ -1,20 +1,43 @@
 ---
-title: 'COVID-19 Impact Analysis: Cases, Deaths, and Vaccination Rates'
-author:
-  - name: 'Lin Qi'
-  - name: 'Midhun Unnikrishnan'
-  - name: 'Sumintra Boonmat'
 format:
   revealjs:
     theme: simple
+    title-slide: false
 ---
 
-## Problem Introduction
+##
+::: {style="text-align: center; margin-top: 15vh;"}
+## <span style="font-size: 1.4em;">COVID-19 Impact Analysis:</span><br>
+<span style="font-size: 1.3em;">Cases, Deaths, and Vaccination Rates</span>
+
+<br>
+
+<span style="color: #111184;">Lin Qi</span><br>
+<span style="color: #111184;">Midhun Unnikrishnan</span><br>
+<span style="color: #111184;">Sumintra Boonmat</span>
+:::
+
+---
+
+## <span style="color: #111184;">Problem Introduction</span>
+<hr style="border: 1px solid #f5f5f5;">
 
 ::: {.fragment style="font-size: 60%;"}
-- COVID-19 began spreading worldwide in early 2020, affecting countries in different ways.
-- Governments responded with testing, lockdowns, and vaccines, but results varied.
-- This project focuses on:
+- COVID-19 began spreading worldwide since early 2020, countries have experienced with varying severity.
+- Governments responded with ***testing***, ***lockdowns***, and ***vaccines***, but results varied.
+:::
+
+
+::: {.fragment}
+<span style="font-size: 70%; font-weight: bold;">Research question</span>
+<div style="border: 2px solid #111184; border-radius: 8px; padding: 15px; font-size: 60%; background-color: #f5f5f5;">
+How COVID-19 changed over time across six different countries, and whether vaccines helped reduce cases and deaths.
+</div>
+:::
+
+
+::: {.fragment style="font-size: 60%;"}
+- The study focuses on 6 countries:
     - **Canada**
     - **France**
     - **Germany**
@@ -22,29 +45,23 @@ format:
     - **United Kingdom**
     - **United States**
 :::
-
-::: {.fragment style="font-size: 60%;"}
-**Goal:**  
-Comparing how COVID-19 changed over time in each country, and whether vaccines helped reduce cases and deaths.
-:::
-
-
 ------------------------------------------------------------------------
 
-## Dataset Description
+## <span style="color: #111184;">Dataset Description</span>
+<hr style="border: 1px solid #f5f5f5;">
 
-::: {.fragment}
+::: {.fragment style="font-size: 70%;"}
 - **Data Includes:**
     - Daily confirmed COVID-19 cases
     - COVID-19 deaths
     - Vaccination rates
 :::
 
-::: {.fragment}
+::: {.fragment style="font-size: 70%;"}
 - **Source:** [Our World in Data](https://ourworldindata.org/)
 :::
 
-::: {.fragment}
+::: {.fragment style="font-size: 70%;"}
 - **Time Period:**  
     - February 2020 – February 2023  
     - January 16, 2021 – September 4, 2022 (Vaccination Rates)
@@ -53,22 +70,24 @@ Comparing how COVID-19 changed over time in each country, and whether vaccines h
 
 ------------------------------------------------------------------------
 
-## Methods
+## <span style="color: #111184;">Methods</span>
+<hr style="border: 1px solid #f5f5f5;">
 
-::: {style="font-size: 80%;"}
-1. **Data Source**: 
+::: {.fragment style="font-size: 80%;"}
+- **Data Source**: 
 COVID-19 cases, deaths, and vaccination rates data from Our World in Data.
 
-2. **Data Cleaning & Processing:** 
+- **Data Cleaning & Processing:** 
 filtering and cleaning data using R, removing missing values.
-
-3. **Selected Countries for Comparison:** 
+:::
+::: {.fragment style="font-size: 80%;"}
+- **Selected Countries for Comparison:** 
 Canada, France, Germany, India, the UK, and the US.
 
-4. **Time periods:** 
+- **Time periods:** 
 were aligned to ensure fair comparisons between countries.
 
-5. **Analysis:** 
+- **Analysis:** 
 created visualizations to compare trends across cases, deaths, and vaccinations.
 :::
 ---
