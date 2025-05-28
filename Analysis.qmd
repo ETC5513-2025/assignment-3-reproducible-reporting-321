@@ -14,7 +14,7 @@ editor: visual
 knitr::opts_chunk$set(
   warning = FALSE,
   message = FALSE,
-  echo = TRUE
+  echo = FALSE
 )
 ```
 
@@ -26,9 +26,8 @@ This report compares the confirmed COVID-19 case number, death rates, and vaccin
 
 # Introduction
 
-<!-- linqi70 -->
+This report details a study of COVID-19 confirmed cases, deaths, and vaccination rates across Canada, France, Germany, India, the UK, and the US from February 2020 to July 2023. It shows the impact of vaccination on pandemic outcomes. Studies state that countries, including the US and UK, saw a decrease in both cases and deaths when vaccination uptake began at the onset of the pandemic. This analysis shows how vaccination has a proportionately large effect relative to decreasing pandemic numbers.
 
-Since early 2020, COVID-19 has impacted countries across the world with varying intensity. As governments responded with testing, lockdowns, and eventually mass vaccination, it became clear that outcomes differed significantly between nations. This study focuses on France, Germany, India, Canada, the UK, and the US, aiming to provide a comparative understanding of how COVID-19 evolved in each country and whether vaccination efforts aligned with reduced fatality rates.
 
 # Methodology {#sec-method}
 
@@ -64,9 +63,10 @@ We then merged the confirmed case dataset with the vaccination dataset by countr
 library(tidyverse)
 library(lubridate)
 library(ggplot2)
-case = read_csv("COVID-19 confirmed case per million.csv")
-death = read_csv("Total confirmed deaths due to COVID-19 per 100,000 people.csv")
-vaccine = read_csv("COVID-19 vaccination.csv")
+
+case = read_csv("data/COVID-19 confirmed case per million.csv")
+death = read_csv("data/Total confirmed deaths due to COVID-19 per 100,000 people.csv")
+vaccine = read_csv("data/COVID-19 vaccination.csv")
 
 names(case)[1] <- "Day"
 names(vaccine)[1] <- "Day"
@@ -227,6 +227,7 @@ The overall findings show that vaccination contributed to lower death rates and 
 # Discussion {#sec-discussion}
 
 1.  Case rates depend heavily on how much testing was available and how consistently it was used. Some countries, particularly in early stages of the pandemic, had limited testing capacity, meaning many infections may have gone unrecorded. In contrast, countries with widespread and frequent testing likely reported more cases, even among people with mild or no symptoms.
+
 2.  The differences in how countries report COVID-19 deaths may affect the accuracy of comparisons. For example, some countries may only record deaths that occur in hospitals, while others include deaths that happen at home. This means that countries with more limited reporting systems could appear to have lower death rates, even if the actual impact was higher.
 
 # Conclusion {#sec-conclusion}
@@ -242,3 +243,7 @@ Our findings highlight three key observations:
 3.  A 7-day lag analysis indicated that rising vaccination rates were followed by a reduction in new case numbers. Areas where vaccination started early and was kept up showed the strongest impact.
 
 These insights suggest that timely and sustained vaccination campaigns played a crucial role in reducing transmission and saving lives. Future public health responses should prioritize early vaccine deployment during pandemics.
+
+# Recommendations {#sec-recommendations}
+
+Given the findings, we suggest that further pandemic responses concentrate on spreading vaccinations quickly, especially in lower-income parts of the world like India, in order to reduce chances for breaks in case numbers. As seen in @fig-daily-change, rather than waiting for a surge, Governments should consider establishing proactive vaccination schemes, ensuring vaccines are deployed before a high number of cases occur. Having comparable ways of reporting data in different nations allows for better assessment and guides effective policy creation. Finally such campaigns need to make sure vaccination efforts continue, because sustained work in the US and UK greatly reduced the number of people affected and the death rate, as shown in @fig-case-death-vacc.
