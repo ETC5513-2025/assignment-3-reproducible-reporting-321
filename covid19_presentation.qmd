@@ -1,0 +1,218 @@
+---
+format:
+  revealjs:
+    theme: simple
+    slide-number: true
+---
+
+## 
+
+::: {style="text-align: center; margin-top: 15vh;"}
+## [COVID-19 Impact Analysis:]{style="font-size: 1.4em;"}<br>
+
+[Cases, Deaths, and Vaccination Rates]{style="font-size: 1.3em;"}
+
+<br>
+
+[Lin Qi]{style="color: #111184;"}<br> [Midhun
+Unnikrishnan]{style="color: #111184;"}<br> [Sumintra
+Boonmat]{style="color: #111184;"}
+:::
+
+------------------------------------------------------------------------
+
+## [Problem Introduction]{style="color: #111184;"}
+
+<hr style="border: 1px solid #f5f5f5;">
+
+::: {.fragment style="font-size: 60%;"}
+-   COVID-19 began spreading worldwide since early 2020, countries have
+    experienced with varying severity.
+-   Governments responded with ***testing***, ***lockdowns***, and
+    ***vaccines***, but results varied.
+:::
+
+:::: fragment
+[Research question]{style="font-size: 70%; font-weight: bold;"}
+
+::: {style="border: 2px solid #111184; border-radius: 8px; padding: 15px; font-size: 60%; background-color: #f5f5f5;"}
+How COVID-19 changed over time across six different countries, and
+whether vaccines helped reduce cases and deaths.
+:::
+::::
+
+::: {.fragment style="font-size: 60%;"}
+-   The study focuses on 6 countries:
+    -   **Canada**
+    -   **France**
+    -   **Germany**
+    -   **India**
+    -   **United Kingdom**
+    -   **United States**
+:::
+
+------------------------------------------------------------------------
+
+## [Dataset Description]{style="color: #111184;"}
+
+<hr style="border: 1px solid #f5f5f5;">
+
+::: {.fragment style="font-size: 70%;"}
+-   **Data Includes:**
+    -   Daily confirmed COVID-19 cases
+    -   COVID-19 deaths
+    -   Vaccination rates
+:::
+
+::: {.fragment style="font-size: 70%;"}
+-   **Source:** [Our World in Data](https://ourworldindata.org/)
+:::
+
+::: {.fragment style="font-size: 70%;"}
+-   **Time Period:**
+    -   Cases & death rates: February 2020 – February 2023
+    -   Vaccination rates: January 2021 – September 2022
+:::
+
+------------------------------------------------------------------------
+
+## [Methods]{style="color: #111184;"}
+
+<hr style="border: 1px solid #f5f5f5;">
+
+::: {.fragment style="font-size: 70%;"}
+-   **Data Source**: COVID-19 cases, deaths, and vaccination rates data
+    from Our World in Data.
+
+-   **Data Cleaning & Processing:** filtering and cleaning data using R,
+    removing missing values.
+:::
+
+::: {.fragment style="font-size: 70%;"}
+-   **Selected Countries for Comparison:** Canada, France, Germany,
+    India, the UK, and the US.
+
+-   **Time periods:** were aligned to ensure fair comparisons between
+    countries.
+
+    -   Cases & death rates: February 2020 – February 2023
+    -   Vaccination rates: January 2021 – September 2022
+
+-   **Analysis:** created visualizations to compare trends across cases,
+    deaths, and vaccinations.
+:::
+
+------------------------------------------------------------------------
+
+## [Result Summary]{style="color: #111184;"}
+
+<hr style="border: 1px solid #f5f5f5; margin-bottom: 1.5em;">
+
+<div style="text-align: center;">
+  <img src="images/cases_vaccination.png" style="width: 70%;">
+</div>
+
+:::: fragment
+<div style="font-weight: bold; font-size: 60%; margin-top: 1.2em; margin-bottom: 0.6em;">
+Vaccination Rolled Out After Cases Rose
+</div>
+
+<div style="font-size: 60%;">
+- This figure overlays confirmed COVID-19 case rates and vaccination rates.  
+- Case surges often occurred **before** vaccination began.  
+- Many countries began vaccinating **after** major outbreaks had already started.
+</div>
+::::
+
+
+------------------------------------------------------------------------
+
+## [Result Summary]{style="color: #111184;"}
+<hr style="border: 1px solid #f5f5f5; margin-bottom: 1.5em;">
+
+<div style="text-align: center;">
+  <img src="images/cases_deaths_vaccination.png" style="width: 70%;">
+</div>
+
+:::: fragment
+<div style="font-weight: bold; font-size: 60%; margin-top: 1.2em; margin-bottom: 0.6em;">
+Vaccines Helped Reduce Deaths Over Time
+</div>
+
+<div style="font-size: 60%;">
+- This plot compares COVID-19 cases, deaths, and vaccination rates.  
+- As vaccination increased, deaths did **not rise proportionally** with cases.  
+- This was especially true in **later waves**, showing that vaccines helped reduce severity.
+</div>
+::::
+
+------------------------------------------------------------------------
+
+## [Result Summary]{style="color: #111184;"}
+<hr style="border: 1px solid #f5f5f5; margin-bottom: 1.5em;">
+
+<div style="text-align: center;">
+  <img src="images/lagged_vaccination_vs_cases.png" style="width: 70%;">
+</div>
+
+:::: fragment
+<div style="font-weight: bold; font-size: 60%; margin-top: 1.2em; margin-bottom: 0.6em;">
+Vaccines Slowed the Spread After Rollout
+</div>
+
+<div style="font-size: 60%;">
+- This figure shows a **7-day lag analysis** between vaccination rates and new case numbers.  
+- In countries with higher vaccination, new cases **declined shortly after rollout**.  
+- The trend suggests vaccines helped **reduce transmission** within a short time window.
+</div>
+::::
+
+---
+
+## [Conclusion]{style="color: #111184;"}
+
+<hr style="border: 1px solid #f5f5f5;">
+
+::: {.fragment style="font-size: 80%;"}
+After analyzing the COVID-19 cases, deaths, and vaccination data from
+six different countries.
+:::
+
+::: {.fragment style="font-size: 80%;"}
+**Key Findings:**
+:::
+
+::: {.fragment style="font-size: 80%;"}
+1.  Case numbers often rose before widespread vaccination began.
+:::
+
+::: {.fragment style="font-size: 80%;"}
+2.  Major outbreaks led to sharp daily changes in both cases and vaccine
+    doses.
+:::
+
+::: {.fragment style="font-size: 80%;"}
+3.  A 7-day lag analysis showed that higher vaccination rates were
+    followed by fewer new cases, especially where rollout was early and
+    sustained.
+:::
+
+## [Recomendations]{style="color: #111184;"}
+
+<hr style="border: 1px solid #f5f5f5;">
+
+::: {.fragment style="font-size: 80%;"}
+- Start vaccines **rapidly and early**, especially in lower-income regions like India.
+:::
+::: {.fragment style="font-size: 80%;"}
+- Use **proactive vaccination programs** instead of waiting for case surges.
+:::
+::: {.fragment style="font-size: 80%;"}
+- Establish **standardized global data reporting** to enable accurate comparisons and policy decisions.
+:::
+::: {.fragment style="font-size: 80%;"}
+- Ensure **sustained vaccination efforts** over time, not just one-time campaigns.
+:::
+::: {.fragment style="font-size: 80%;"}
+- Long-term vaccine coverage, as seen in the **US and UK**, helped lower both case severity and death rates.
+:::
