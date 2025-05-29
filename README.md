@@ -24,7 +24,14 @@ The project is implemented using R and Quarto, producing a comprehensive PDF rep
 ├── data/                                          # Folder for datasets
 │   ├── COVID-19 confirmed case per million.csv    # Dataset for confirmed cases per million
 │   ├── Total confirmed deaths due to COVID-19 per 100,000 people.csv  # Dataset for deaths per 100,000
-│   ├── COVID-19 vaccination.csv                   # Dataset for vaccination doses per million
+│   ├── COVID-19 vaccination.csv                  # Dataset for vaccination doses per million
+├── Presentation.qmd                              # Quarto Reveal.js presentation
+├── covid19_presentation.html                     # Rendered HTML slides
+├── covid19_presentation_files/                   # Reveal.js support files
+├── images/                                       # Image assets for slides
+│   ├── cases_vaccination.png
+│   ├── cases_deaths_vaccination.png
+│   ├── lagged_vaccination_vs_cases.png
 ├── README.md                                      # Project overview and instructions
 ├── LICENSE                                        # Apache License 2.0
 ├── renv/                                          # R environment management folder
