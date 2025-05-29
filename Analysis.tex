@@ -95,6 +95,39 @@
 % Set default figure placement to htbp
 \def\fps@figure{htbp}
 \makeatother
+% definitions for citeproc citations
+\NewDocumentCommand\citeproctext{}{}
+\NewDocumentCommand\citeproc{mm}{%
+  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
+\makeatletter
+ % allow citations to break across lines
+ \let\@cite@ofmt\@firstofone
+ % avoid brackets around text for \cite:
+ \def\@biblabel#1{}
+ \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
+\makeatother
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
+ {\begin{list}{}{%
+  \setlength{\itemindent}{0pt}
+  \setlength{\leftmargin}{0pt}
+  \setlength{\parsep}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+   \setlength{\leftmargin}{\cslhangindent}
+   \setlength{\itemindent}{-1\cslhangindent}
+  \fi
+  % set entry spacing
+  \setlength{\itemsep}{#2\baselineskip}}}
+ {\end{list}}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{\hfill\break\parbox[t]{\linewidth}{\strut\ignorespaces#1\strut}}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 
 \input{custom-header.tex}
 \makeatletter
@@ -201,19 +234,15 @@ vaccination in reducing the spread and severity of the virus.
 
 \textbf{Data Source}:
 
-We used publicly available datasets from
-\href{https://ourworldindata.org/coronavirus}{Our World in Data},
-including:
+We used publicly available datasets from Our World in Data, including:
 
 \begin{itemize}
 \item
-  Confirmed COVID-19 case numbers:
-  https://ourworldindata.org/covid-cases
+  Confirmed COVID-19 case numbers (Ritchie et al. 2020a)
 \item
-  COVID-19 death data: https://ourworldindata.org/covid-deaths
+  COVID-19 death data (Ritchie et al. 2020b)
 \item
-  COVID-19 vaccination data:
-  https://ourworldindata.org/covid-vaccinations
+  COVID-19 vaccination data (Ritchie et al. 2020c)
 \end{itemize}
 
 \textbf{Time Range Validation}:
@@ -224,7 +253,7 @@ including:
 \item
   Death Rates: February 1, 2020 - February 1, 2023
 \item
-  Vaccination Data:
+  Vaccination Data::
 \end{itemize}
 
 The vaccination dataset was obtained from Our World in Data. We observed
@@ -429,7 +458,6 @@ and consistently.
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
-\tightlist
 \item
   Case rates depend heavily on how much testing was available and how
   consistently it was used. Some countries, particularly in early stages
@@ -486,6 +514,26 @@ guides effective policy creation. Finally such campaigns need to make
 sure vaccination efforts continue, because sustained work in the US and
 UK greatly reduced the number of people affected and the death rate, as
 shown in Figure~\ref{fig-case-death-vacc}.
+
+\section{References}\label{sec-references}
+
+\phantomsection\label{refs}
+\begin{CSLReferences}{1}{0}
+\bibitem[\citeproctext]{ref-owid_covid_cases_2020}
+Ritchie, Hannah, Edouard Mathieu, Lucas Rodés-Guirao, Cameron Appel,
+Charlie Giattino, Esteban Ortiz-Ospina, Joe Hasell, Bobbie Macdonald,
+Diana Beltekian, and Max Roser. 2020a. {``COVID-19 Confirmed Cases.''}
+\url{https://ourworldindata.org/covid-cases}; Our World in Data.
+
+\bibitem[\citeproctext]{ref-owid_covid_deaths_2020}
+---------. 2020b. {``COVID-19 Deaths.''}
+\url{https://ourworldindata.org/covid-deaths}; Our World in Data.
+
+\bibitem[\citeproctext]{ref-owid_covid_vaccinations_2020}
+---------. 2020c. {``COVID-19 Vaccinations.''}
+\url{https://ourworldindata.org/covid-vaccinations}; Our World in Data.
+
+\end{CSLReferences}
 
 
 

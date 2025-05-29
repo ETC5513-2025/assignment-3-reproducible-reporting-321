@@ -16,6 +16,7 @@ mainfont: "Times New Roman"
 linkcolor: blue
 urlcolor: blue
 fontsize: 11pt
+bibliography: references.bib
 header-includes:
   - \input{custom-header.tex}
 ---
@@ -39,13 +40,13 @@ Since early 2020, countries around the globe have experienced COVID-19 to differ
 
 **Data Source**:
 
-We used publicly available datasets from [Our World in Data](https://ourworldindata.org/coronavirus), including:
+We used publicly available datasets from Our World in Data, including:
 
--   Confirmed COVID-19 case numbers: https://ourworldindata.org/covid-cases
+-   Confirmed COVID-19 case numbers [@owid_covid_cases_2020]
 
--   COVID-19 death data: https://ourworldindata.org/covid-deaths
+-   COVID-19 death data [@owid_covid_deaths_2020]
 
--   COVID-19 vaccination data: https://ourworldindata.org/covid-vaccinations
+-   COVID-19 vaccination data [@owid_covid_vaccinations_2020]
 
 **Time Range Validation**:
 
@@ -53,7 +54,7 @@ We used publicly available datasets from [Our World in Data](https://ourworldind
 
 -   Death Rates: February 1, 2020 - February 1, 2023
 
--   Vaccination Data:
+-   Vaccination Data:: 
 
 The vaccination dataset was obtained from Our World in Data. We observed that different countries had different vaccination start and end dates. For example, Canada and the US began recording vaccinations in December 2020, while India started in mid-January 2021. These differences are likely due to unequal access to vaccines and different national data reporting schedules.
 
@@ -136,7 +137,7 @@ vacc_long |>
 
 @fig-vacc-trend shows the 7-day average vaccination doses per million across the six countries. Canada, France, Germany, the UK, and the US all ramped up vaccination rapidly during early 2021, while India lagged slightly behind, with a noticeable delay in rollout. @tbl-vacc-summary confirms the start and end dates of vaccine data coverage, showing that most countries began vaccination efforts in late December 2020. This aligns with Our World in Data’s findings that vaccine rollout was uneven globally, with lower coverage in lower-income regions.
 
-```{r, fig.width=12, fig.height=5}
+```{r, fig.width=12, fig.height=4}
 #| echo: false
 #| label: fig-vacc-vs-case
 #| fig-cap: "Figure: Comparison of confirmed cases and vaccination rates per million (by country)"
@@ -291,3 +292,7 @@ These insights suggest that timely and sustained vaccination campaigns played a 
 # Recommendations {#sec-recommendations}
 
 Given the findings, we suggest that further pandemic responses concentrate on spreading vaccinations quickly, especially in lower-income parts of the world like India, in order to reduce chances for breaks in case numbers. As seen in @fig-daily-change, rather than waiting for a surge, Governments should consider establishing proactive vaccination schemes, ensuring vaccines are deployed before a high number of cases occur. Having comparable ways of reporting data in different nations allows for better assessment and guides effective policy creation. Finally such campaigns need to make sure vaccination efforts continue, because sustained work in the US and UK greatly reduced the number of people affected and the death rate, as shown in @fig-case-death-vacc.
+
+# References {#sec-references}
+
+::: {#refs} :::
