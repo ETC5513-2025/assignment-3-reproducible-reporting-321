@@ -105,69 +105,64 @@ whether vaccines helped reduce cases and deaths.
 ------------------------------------------------------------------------
 
 ## [Result Summary]{style="color: #111184;"}
+
 <hr style="border: 1px solid #f5f5f5; margin-bottom: 1.5em;">
-::: columns
-::: {.column width="50%"}
-![](images/cases_vaccination.png){width="120%"}
-:::
 
-::: {.column width="50%" style="font-size: 60%;"}
-::: {style="font-weight: bold; font-size: 80%; margin-bottom: 0.6em;"}
+<div style="text-align: center;">
+  <img src="images/cases_vaccination.png" style="width: 70%;">
+</div>
+
+:::: fragment
+<div style="font-weight: bold; font-size: 60%; margin-top: 1.2em; margin-bottom: 0.6em;">
 Vaccination Rolled Out After Cases Rose
-:::
+</div>
 
--   This figure overlays confirmed COVID-19 case rates and vaccination
-    rates.\
--   Case surges often occurred **before** vaccination began.\
--   Many countries began vaccinating **after** major outbreaks had
-    already started.
-:::
-:::
+<div style="font-size: 60%;">
+- This figure overlays confirmed COVID-19 case rates and vaccination rates.  
+- Case surges often occurred **before** vaccination began.  
+- Many countries began vaccinating **after** major outbreaks had already started.
+</div>
+::::
+
 
 ------------------------------------------------------------------------
 
 ## [Result Summary]{style="color: #111184;"}
 <hr style="border: 1px solid #f5f5f5; margin-bottom: 1.5em;">
 
-::: {.columns}
+<div style="text-align: center;">
+  <img src="images/cases_deaths_vaccination.png" style="width: 70%;">
+</div>
 
-::: {.column width="50%"}
-![](images/cases_deaths_vaccination.png){width="100%"}
-:::
-
-::: {.column width="50%" style="font-size: 60%;"}
-<div style="font-weight: bold; font-size: 80%; margin-bottom: 0.6em;">
+<div style="font-weight: bold; font-size: 60%; margin-top: 1.2em; margin-bottom: 0.6em;">
 Vaccines Helped Reduce Deaths Over Time
 </div>
+
+<div style="font-size: 60%;">
 - This plot compares COVID-19 cases, deaths, and vaccination rates.  
 - As vaccination increased, deaths did **not rise proportionally** with cases.  
 - This was especially true in **later waves**, showing that vaccines helped reduce severity.
-:::
-:::
+</div>
 
 
 ------------------------------------------------------------------------
 
 ## [Result Summary]{style="color: #111184;"}
-
 <hr style="border: 1px solid #f5f5f5; margin-bottom: 1.5em;">
 
-::: {.columns}
-::: {.column width="50%"}
-![](images/lagged_vaccination_vs_cases.png){width="100%"}
-:::
+<div style="text-align: center;">
+  <img src="images/lagged_vaccination_vs_cases.png" style="width: 70%;">
+</div>
 
-::: {.column width="50%" style="font-size: 60%;"}
-<div style="font-weight: bold; font-size: 80%; margin-bottom: 0.6em;">
+<div style="font-weight: bold; font-size: 60%; margin-top: 1.2em; margin-bottom: 0.6em;">
 Vaccines Slowed the Spread After Rollout
 </div>
 
+<div style="font-size: 60%;">
 - This figure shows a **7-day lag analysis** between vaccination rates and new case numbers.  
 - In countries with higher vaccination, new cases **declined shortly after rollout**.  
 - The trend suggests vaccines helped **reduce transmission** within a short time window.
-:::
-
-:::
+</div>
 
 ---
 
