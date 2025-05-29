@@ -75,9 +75,9 @@ case = read_csv(here::here("data/COVID-19 confirmed case per million.csv"))
 death = read_csv(here::here("data/Total confirmed deaths due to COVID-19 per 100,000 people.csv"))
 vaccine = read_csv(here::here("data/COVID-19 vaccination.csv"))
 
-names(case)[1] <- "Day"
-names(vaccine)[1] <- "Day"
-names(death)[1] <- "Day"
+names(case)[1] = "Day"
+names(vaccine)[1] = "Day"
+names(death)[1] = "Day"
 ```
 
 ```{r}
@@ -96,9 +96,9 @@ death_long = death |>
 
 ```{r}
 #| echo: false
-names(vaccine) <- c("Day", "Canada", "France", "Germany", "India", "United Kingdom", "United States")
+names(vaccine) = c("Day", "Canada", "France", "Germany", "India", "United Kingdom", "United States")
 
-vacc_long <- vaccine |> 
+vacc_long = vaccine |> 
   pivot_longer(-Day, names_to = "Country", values_to = "Vaccination") |>
   mutate(Day = ymd(Day), 
          Doses = as.numeric(Vaccination)) |>
@@ -136,6 +136,8 @@ vacc_long |>
 ```
 
 @fig-vacc-trend shows the 7-day average vaccination doses per million across the six countries. Canada, France, Germany, the UK, and the US all ramped up vaccination rapidly during early 2021, while India lagged slightly behind, with a noticeable delay in rollout. @tbl-vacc-summary confirms the start and end dates of vaccine data coverage, showing that most countries began vaccination efforts in late December 2020. This aligns with Our World in Data’s findings that vaccine rollout was uneven globally, with lower coverage in lower-income regions.
+
+# Results {#sec-results}
 
 ```{r, fig.width=12, fig.height=4}
 #| echo: false
@@ -259,7 +261,7 @@ The trend is less clear in countries with shorter or later vaccination coverage,
 
 We found that countries with early and wide vaccination had better control of the virus. In these places, case numbers went down after people started getting vaccinated. Later waves of COVID-19 caused fewer deaths than early ones. This shows that vaccines helped not only to stop the spread, but also to stop people from dying. Vaccination made a big difference.
 
-# Results {#sec-results}
+# Previous-Results {#sec-pre-results}
 
 The daily changes in COVID-19 case and vaccination rates in @fig-daily-change shows that large outbreaks triggered spikes in vaccination, indicating reactive public health responses. Similarly, @fig-vacc-vs-case, shows that vaccines were often given after case numbers had already started rising.
 
