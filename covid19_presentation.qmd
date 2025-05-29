@@ -134,6 +134,7 @@ Vaccination Rolled Out After Cases Rose
   <img src="images/cases_deaths_vaccination.png" style="width: 70%;">
 </div>
 
+:::: fragment
 <div style="font-weight: bold; font-size: 60%; margin-top: 1.2em; margin-bottom: 0.6em;">
 Vaccines Helped Reduce Deaths Over Time
 </div>
@@ -143,7 +144,7 @@ Vaccines Helped Reduce Deaths Over Time
 - As vaccination increased, deaths did **not rise proportionally** with cases.  
 - This was especially true in **later waves**, showing that vaccines helped reduce severity.
 </div>
-
+::::
 
 ------------------------------------------------------------------------
 
@@ -154,6 +155,7 @@ Vaccines Helped Reduce Deaths Over Time
   <img src="images/lagged_vaccination_vs_cases.png" style="width: 70%;">
 </div>
 
+:::: fragment
 <div style="font-weight: bold; font-size: 60%; margin-top: 1.2em; margin-bottom: 0.6em;">
 Vaccines Slowed the Spread After Rollout
 </div>
@@ -163,6 +165,7 @@ Vaccines Slowed the Spread After Rollout
 - In countries with higher vaccination, new cases **declined shortly after rollout**.  
 - The trend suggests vaccines helped **reduce transmission** within a short time window.
 </div>
+::::
 
 ---
 
