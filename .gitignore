@@ -20,6 +20,7 @@
 
 # RStudio files
 .Rproj.user/
+renv/library/
 
 # produced vignettes
 vignettes/*.html
@@ -44,5 +45,13 @@ docs/
 
 # translation temp files
 po/*~
+
+library/
+local/
+cellar/
+lock/
+python/
+sandbox/
+staging/
 
 # End of .gitignore xXx
