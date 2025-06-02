@@ -70,10 +70,6 @@ The confirmed case and vaccination datasets were merged by country and date. Thi
 
 **Data Analysis Strategy**:
 
-The resulting dataset was used to explore trends in vaccination coverage and pandemic progression through visualizations and a 7-day lag analysis. @fig-vacc-trend illustrates the 7-day average vaccination rate per million, highlighting varied rollout speeds. @tbl-vacc-summary summarizes the vaccination data coverage period for each country, confirming early rollout in high-income countries and delayed coverage in others.
-
-These preprocessing steps ensured data quality, consistency, and meaningful cross-country comparisons throughout the analysis.
-
 ```{r}
 #| echo: false
 library(tidyverse)
@@ -118,7 +114,7 @@ merge2 = left_join(merge1, death_long |>
                    by = c("Day", "Country"))
 ```
 
-```{r}
+```{r, fig.width=12, fig.height=5}
 #| echo: false
 #| label: fig-vacc-trend
 #| fig-cap: "Figure: COVID-19 vaccine: 7-day average doses per million (by country)"
@@ -143,6 +139,9 @@ vacc_long |>
   knitr::kable()
 ```
 
+The resulting dataset was used to explore trends in vaccination coverage and pandemic progression through visualizations and a 7-day lag analysis. @fig-vacc-trend illustrates the 7-day average vaccination rate per million, highlighting varied rollout speeds. @tbl-vacc-summary summarizes the vaccination data coverage period for each country, confirming early rollout in high-income countries and delayed coverage in others.
+
+These preprocessing steps ensured data quality, consistency, and meaningful cross-country comparisons throughout the analysis.
 
 # Results {#sec-results}
 
@@ -201,8 +200,6 @@ merge1 |>
 
 ```
 
-A 7-day lag analysis @fig-lag-effect shows that higher vaccination rates were followed by declines in new case numbers, particularly in countries like the US and UK. This suggests that vaccines helped slow the spread of the virus.
-
 ```{r, fig.width=12, fig.height=4}
 #| echo: false
 #| label: fig-lag-effect
@@ -229,9 +226,7 @@ ggplot(merge1_lag, aes(x = vacc_7, y = Confirmed_per_million)) +
   )
 ```
 
-@fig-case-death-vacc illustrates the trends in confirmed COVID-19 cases, deaths, and vaccination rates per million across six countries. In the early stages of the pandemic, when vaccines were not yet available, the number of deaths closely followed confirmed cases. However, in later waves, as vaccination coverage expanded, deaths did not rise in proportion to case numbers. This growing gap suggests that vaccines played a key role in reducing the severity of outcomes, even when transmission rates remained high.
-
-The overall findings show that vaccination contributed to lower death rates and reduced the impact of major outbreaks when implemented early and consistently.
+A 7-day lag analysis @fig-lag-effect shows that higher vaccination rates were followed by declines in new case numbers, particularly in countries like the US and UK. This suggests that vaccines helped slow the spread of the virus.
 
 ```{r, fig.width=12, fig.height=4}
 #| echo: false
@@ -259,6 +254,10 @@ merge2 |>
     strip.text = element_text(size = 17, face = "bold")
   )
 ```
+
+@fig-case-death-vacc illustrates the trends in confirmed COVID-19 cases, deaths, and vaccination rates per million across six countries. In the early stages of the pandemic, when vaccines were not yet available, the number of deaths closely followed confirmed cases. However, in later waves, as vaccination coverage expanded, deaths did not rise in proportion to case numbers. This growing gap suggests that vaccines played a key role in reducing the severity of outcomes, even when transmission rates remained high.
+
+The overall findings show that vaccination contributed to lower death rates and reduced the impact of major outbreaks when implemented early and consistently.
 
 # Discussion {#sec-discussion}
 
