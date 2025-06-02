@@ -82,15 +82,17 @@
 \makesavenoteenv{longtable}
 \usepackage{graphicx}
 \makeatletter
-\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
-\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
-\makeatother
-% Scale images if necessary, so that they will not overflow the page
-% margins by default, and it is still possible to overwrite the defaults
-% using explicit options in \includegraphics[width, height, ...]{}
-\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
 % Set default figure placement to htbp
-\makeatletter
 \def\fps@figure{htbp}
 \makeatother
 % definitions for citeproc citations
@@ -170,9 +172,6 @@
 \@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
 \makeatother
 
-\ifLuaTeX
-  \usepackage{selnolig}  % disable illegal ligatures
-\fi
 \usepackage{bookmark}
 
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
@@ -289,22 +288,11 @@ for each country.
 
 \textbf{Data Analysis Strategy}:
 
-The resulting dataset was used to explore trends in vaccination coverage
-and pandemic progression through visualizations and a 7-day lag
-analysis. Figure~\ref{fig-vacc-trend} illustrates the 7-day average
-vaccination rate per million, highlighting varied rollout speeds.
-Table~\ref{tbl-vacc-summary} summarizes the vaccination data coverage
-period for each country, confirming early rollout in high-income
-countries and delayed coverage in others.
-
-These preprocessing steps ensured data quality, consistency, and
-meaningful cross-country comparisons throughout the analysis.
-
 \begin{figure}
 
 \centering{
 
-\includegraphics{Analysis_files/figure-pdf/fig-vacc-trend-1.pdf}
+\pandocbounded{\includegraphics[keepaspectratio]{Analysis_files/figure-pdf/fig-vacc-trend-1.pdf}}
 
 }
 
@@ -335,22 +323,32 @@ United States & 2020-12-15 & 2023-05-09 \\
 
 \end{longtable}
 
+The resulting dataset was used to explore trends in vaccination coverage
+and pandemic progression through visualizations and a 7-day lag
+analysis. Figure~\ref{fig-vacc-trend} illustrates the 7-day average
+vaccination rate per million, highlighting varied rollout speeds.
+Table~\ref{tbl-vacc-summary} summarizes the vaccination data coverage
+period for each country, confirming early rollout in high-income
+countries and delayed coverage in others.
+
+These preprocessing steps ensured data quality, consistency, and
+meaningful cross-country comparisons throughout the analysis.
+
 \section{Results}\label{sec-results}
 
 The analysis across six countries shows key patterns in the relationship
-between COVID-19 cases, deaths, and vaccination.
-
-The daily changes in COVID-19 case and vaccination rates in
-Figure~\ref{fig-daily-change} shows that large outbreaks triggered
-spikes in vaccination, indicating reactive public health responses.
-Similarly, Figure~\ref{fig-vacc-vs-case}, shows that vaccines were often
-given after case numbers had already started rising.
+between COVID-19 cases, deaths, and vaccination. The daily changes in
+COVID-19 case and vaccination rates in Figure~\ref{fig-daily-change}
+shows that large outbreaks triggered spikes in vaccination, indicating
+reactive public health responses. Similarly,
+Figure~\ref{fig-vacc-vs-case}, shows that vaccines were often given
+after case numbers had already started rising.
 
 \begin{figure}
 
 \centering{
 
-\includegraphics{Analysis_files/figure-pdf/fig-daily-change-1.pdf}
+\pandocbounded{\includegraphics[keepaspectratio]{Analysis_files/figure-pdf/fig-daily-change-1.pdf}}
 
 }
 
@@ -363,12 +361,25 @@ cases and vaccine doses per million}
 
 \centering{
 
-\includegraphics{Analysis_files/figure-pdf/fig-vacc-vs-case-1.pdf}
+\pandocbounded{\includegraphics[keepaspectratio]{Analysis_files/figure-pdf/fig-vacc-vs-case-1.pdf}}
 
 }
 
 \caption{\label{fig-vacc-vs-case}Figure: Comparison of confirmed cases
 and vaccination rates per million (by country)}
+
+\end{figure}%
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{Analysis_files/figure-pdf/fig-lag-effect-1.pdf}}
+
+}
+
+\caption{\label{fig-lag-effect}Figure: Lagged vaccination rate vs
+confirmed cases (7-day lag, by country)}
 
 \end{figure}%
 
@@ -381,12 +392,12 @@ vaccines helped slow the spread of the virus.
 
 \centering{
 
-\includegraphics{Analysis_files/figure-pdf/fig-lag-effect-1.pdf}
+\pandocbounded{\includegraphics[keepaspectratio]{Analysis_files/figure-pdf/fig-case-death-vacc-1.pdf}}
 
 }
 
-\caption{\label{fig-lag-effect}Figure: Lagged vaccination rate vs
-confirmed cases (7-day lag, by country)}
+\caption{\label{fig-case-death-vacc}Figure: COVID-19 confirmed
+case-death rates-vaccination by country)}
 
 \end{figure}%
 
@@ -402,19 +413,6 @@ when transmission rates remained high.
 The overall findings show that vaccination contributed to lower death
 rates and reduced the impact of major outbreaks when implemented early
 and consistently.
-
-\begin{figure}
-
-\centering{
-
-\includegraphics{Analysis_files/figure-pdf/fig-case-death-vacc-1.pdf}
-
-}
-
-\caption{\label{fig-case-death-vacc}Figure: COVID-19 confirmed
-case-death rates-vaccination by country)}
-
-\end{figure}%
 
 \section{Discussion}\label{sec-discussion}
 
